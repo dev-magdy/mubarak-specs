@@ -1,0 +1,454 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Wikimedia API",
+    "description": "The MediaWiki Core REST API lets you interact with MediaWiki by sending HTTP requests to unique URLs. You can use the API to build apps and scripts that search and display wiki pages, get media files, and explore page history.",
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "Mediawiki REST API",
+    "url": "https://www.mediawiki.org/wiki/API:REST_API"
+  },
+  "servers": [
+    {
+      "url": "https://en.wikipedia.org/w/rest.php/v1"
+    }
+  ],
+  "paths": {
+    "/page/{title}/history": {
+      "get": {
+        "summary": "Get page history by title",
+        "description": "Get page history by title",
+        "operationId": "getPageTitleHistory",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "description": "Page title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageTitleHistory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/page/{title}/history/counts/{type}": {
+      "get": {
+        "summary": "Get page history counts by type",
+        "description": "Get page history counts by type",
+        "operationId": "getPageHistoryCountType",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "description": "Page Title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Count type",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "anonymous",
+                "bot",
+                "editors",
+                "edits",
+                "minor",
+                "reverted"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageTitleHistoryCount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/page": {
+      "get": {
+        "summary": "Search wikipedia page",
+        "description": "Search wikipedia page",
+        "operationId": "searchPage",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Text to search",
+            "required": true,
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to display",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageSearchResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/title": {
+      "get": {
+        "summary": "Search wikipedia page and return the title",
+        "description": "Search wikipedia page and return the title",
+        "operationId": "searchPageTitle",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Text to search",
+            "required": true,
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results to display",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageSearchResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/page/{title}": {
+      "get": {
+        "summary": "Get page by title",
+        "description": "Returns a single page in JSON format",
+        "operationId": "getPageByTitle",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "description": "Page title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/page/{title}/bare": {
+      "get": {
+        "summary": "Get bare page by title",
+        "description": "Returns a single page in JSON format",
+        "operationId": "getPageByTitleBare",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "description": "Page title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/page/{title}/html": {
+      "get": {
+        "summary": "Get HTML page by title",
+        "description": "Returns a single page in HTML format",
+        "operationId": "getPageByTitleHTML",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "description": "Page title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/page/{title}/with_html": {
+      "get": {
+        "summary": "Get JSON page by title with HTML content",
+        "description": "Returns a single page in JSON format with HTML",
+        "operationId": "getPageByTitleWithHTML",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "description": "Page title",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PageTitleHistory": {
+        "type": "object",
+        "properties": {
+          "revisions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "type": "string"
+                },
+                "minor": {
+                  "type": "boolean"
+                },
+                "size": {
+                  "type": "integer"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "delta": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "latest": {
+            "type": "string"
+          }
+        }
+      },
+      "PageTitleHistoryCount": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageSearchResult": {
+        "type": "object",
+        "properties": {
+          "pages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "key": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "excerpt": {
+                  "type": "string"
+                },
+                "matched_title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "thumbnail": {
+                  "type": "object",
+                  "properties": {
+                    "mimetype": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "integer"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "duration": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "key": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "latest": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "timestamp": {
+                "type": "string"
+              }
+            }
+          },
+          "content_model": {
+            "type": "string"
+          },
+          "license": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

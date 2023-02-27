@@ -1,0 +1,993 @@
+openapi: 3.0.0
+servers:
+
+  - description: The Star Wars API is the world's first quantified and programmatically-formatted set of Star Wars data.
+    url: https://swapi.dev/api
+info:
+  version: "1.0.0"
+  title: swapi
+  description: The API Star Wars
+paths:
+  /people/{id}:
+    get:
+      tags:
+        - People
+      description: Get a single person by Id
+      summary : Get a single person by Id
+      operationId: getPeopleById
+      parameters:
+        - in: path
+          name: id
+          required:  true
+          description: person Id
+          schema:
+            type: integer
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee
+            default : "json"
+      responses:
+        '200':
+          description: A single person
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/people'
+  /people:
+    get:
+      tags:
+        - People
+      description: Get a list of paginated people
+      summary : Get a list of people
+      operationId: getPeople
+      parameters:
+        - in: query
+          name: page
+          description: page number to return
+          schema:
+            type: integer
+        - in: query
+          name: search
+          description: search the name of the person
+          schema:
+            type: string
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee 
+            default :  json
+      responses:
+        '200':
+          description: A list of people
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count :
+                    type : integer
+                  next:
+                    type : string
+                    format : url
+                  previous: 
+                    type: string
+                    format: url
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/people'
+  /vehicles/{id}:
+    get:
+      tags:
+        - Vehicles
+      description: Get a single vehicle by Id
+      summary : Get a single vehicle by Id
+      operationId: getVehicleById
+      parameters:
+        - in: path
+          name: id
+          required:  true
+          description: vehicle Id
+          schema:
+            type: integer
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee
+            default : "json"
+      responses:
+        '200':
+          description: A single vehicle
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/vehicles'
+  /vehicle:
+    get:
+      tags:
+        - Vehicle
+      description: Get a list of paginated vehicles
+      summary : Get a list of vehicles
+      operationId: getVehicles
+      parameters:
+        - in: query
+          name: page
+          description: page number to return
+          schema:
+            type: integer
+        - in: query
+          name: search
+          description: search the name/model of the vehicle
+          schema:
+            type: string
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee 
+            default :  json
+      responses:
+        '200':
+          description: A list of vehicles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count :
+                    type : integer
+                  next:
+                    type : string
+                    format : url
+                  previous: 
+                    type: string
+                    format: url
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/vehicles'
+   
+  
+  /films/{id}:
+    get:
+      tags:
+        - films
+      description: Get a single film by Id
+      summary : Get a single film by Id
+      operationId: getFilmById
+      parameters:
+        - in: path
+          name: id
+          required:  true
+          description: film Id
+          schema:
+            type: integer
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee
+            default : "json"
+      responses:
+        '200':
+          description: A single film
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/films'
+  /films:
+    get:
+      tags:
+        - film
+      description: Get a list of paginated films
+      summary : Get a list of films
+      operationId: getFilms
+      parameters:
+        - in: query
+          name: page
+          description: page number to return
+          schema:
+            type: integer
+        - in: query
+          name: search
+          description: search title of the movie
+          schema:
+            type: string
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee 
+            default :  json
+      responses:
+        '200':
+          description: A list of films
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count :
+                    type : integer
+                  next:
+                    type : string
+                    format : url
+                  previous: 
+                    type: string
+                    format: url
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/films'
+  /starships/{id}:
+    get:
+      tags:
+        - starships
+      description: Get a single starship by Id
+      summary : Get a single starship by Id
+      operationId: getStarshipById
+      parameters:
+        - in: path
+          name: id
+          required:  true
+          description: starship Id
+          schema:
+            type: integer
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee
+            default : "json"
+      responses:
+        '200':
+          description: A single starship
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/starships'
+  /start:
+    get:
+      tags:
+        - starship
+      description: Get a list of paginated starships
+      summary : Get a list of starships
+      operationId: getStarships
+      parameters:
+        - in: query
+          name: page
+          description: page number to return
+          schema:
+            type: integer
+        - in: query
+          name: search
+          description: search name/mode of the starship
+          schema:
+            type: string
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee 
+            default :  json
+      responses:
+        '200':
+          description: A list of starships
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count :
+                    type : integer
+                  next:
+                    type : string
+                    format : url
+                  previous: 
+                    type: string
+                    format: url
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/starships'
+  /planets/{id}:
+    get:
+      tags:
+        - planets
+      description: Get a single planet by Id
+      summary : Get a single planet by Id
+      operationId: getPlanetById
+      parameters:
+        - in: path
+          name: id
+          required:  true
+          description: planet Id
+          schema:
+            type: integer
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee
+            default : "json"
+      responses:
+        '200':
+          description: A single planet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/planets'
+  /planets:
+    get:
+      tags:
+        - planet
+      description: Get a list of paginated planets
+      summary : Get a list of planets
+      operationId: getPlanets
+      parameters:
+        - in: query
+          name: page
+          description: page number to return
+          schema:
+            type: integer
+        - in: query
+          name: search
+          description: search name of the planet
+          schema:
+            type: string
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee 
+            default :  json
+      responses:
+        '200':
+          description: A list of planets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count :
+                    type : integer
+                  next:
+                    type : string
+                    format : url
+                  previous: 
+                    type: string
+                    format: url
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/planets'
+  /species/{id}:
+    get:
+      tags:
+        - species
+      description: Get a single species by Id
+      summary : Get a single species by Id
+      operationId: getSpeciesById
+      parameters:
+        - in: path
+          name: id
+          required:  true
+          description: species Id
+          schema:
+            type: integer
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee
+            default : "json"
+      responses:
+        '200':
+          description: A single species
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/species'
+  /species:
+    get:
+      tags:
+        - species
+      description: Get a list of paginated species
+      summary : Get a list of species
+      operationId: getSpecies
+      parameters:
+        - in: query
+          name: page
+          description: page number to return
+          schema:
+            type: integer
+        - in: query
+          name: search
+          description: search name of the species
+          schema:
+            type: string
+        - in: query
+          name: format
+          description: format to return data JSON or wookiee!
+          schema:
+            type: string
+            enum : 
+              - json
+              - wookiee 
+            default :  json
+      responses:
+        '200':
+          description: A list of species
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count :
+                    type : integer
+                  next:
+                    type : string
+                    format : url
+                  previous: 
+                    type: string
+                    format: url
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/species'
+components:
+  schemas:
+    films:
+      description: A Star Wars film
+      properties:
+        characters:
+          description: The people resources featured within this film.
+          type: array
+          items: 
+            type: string
+            format: url
+        created:
+          description: The ISO 8601 date format of the time that this resource was
+            created.
+          format: date-time
+          type: string
+        director:
+          description: The director of this film.
+          type: string
+        edited:
+          description: the ISO 8601 date format of the time that this resource was
+            edited.
+          format: date-time
+          type: string
+        episode_id:
+          description: The episode number of this film.
+          type: integer
+        opening_crawl:
+          description: The opening crawl text at the beginning of this film.
+          type: string
+        planets:
+          description: The planet resources featured within this film.
+          type: array
+          items: 
+            type: string
+            format: url
+        producer:
+          description: The producer(s) of this film.
+          type: string
+        release_date:
+          description: The release date at original creator country.
+          format: date
+          type: string
+        species:
+          description: The species resources featured within this film.
+          type: array
+          items: 
+            type: string
+            format: url
+        starships:
+          description: The starship resources featured within this film.
+          type: array
+          items: 
+            type: string
+            format: url
+        title:
+          description: The title of this film.
+          type: string
+        url:
+          description: The url of this resource
+          format: uri
+          type: string
+        vehicles:
+          description: The vehicle resources featured within this film.
+          type: array
+          items: 
+            type: string
+            format: url
+      required:
+      - title
+      - episode_id
+      - opening_crawl
+      - director
+      - producer
+      - release_date
+      - characters
+      - planets
+      - starships
+      - vehicles
+      - species
+      - url
+      - created
+      - edited
+      title: Film
+      type: object
+    people:
+      description: A person within the Star Wars universe
+      properties:
+        birth_year:
+          description: The birth year of this person. BBY (Before the Battle of Yavin)
+            or ABY (After the Battle of Yavin).
+          type: string
+        created:
+          description: The ISO 8601 date format of the time that this resource was
+            created.
+          format: date-time
+          type: string
+        edited:
+          description: the ISO 8601 date format of the time that this resource was
+            edited.
+          format: date-time
+          type: string
+        eye_color:
+          description: The eye color of this person.
+          type: string
+        films:
+          description: An array of urls of film resources that this person has been
+            in.
+          type: array
+          items: 
+            type: string
+            format: url
+        gender:
+          description: The gender of this person (if known).
+          type: string
+        hair_color:
+          description: The hair color of this person.
+          type: string
+        height:
+          description: The height of this person in meters.
+          type: string
+        homeworld:
+          description: The url of the planet resource that this person was born on.
+          type: string
+        mass:
+          description: The mass of this person in kilograms.
+          type: string
+        name:
+          description: The name of this person.
+          type: string
+        skin_color:
+          description: The skin color of this person.
+          type: string
+        species:
+          description: The url of the species resource that this person is.
+          type: array
+          items: 
+            type: string
+            format: url
+        starships:
+          description: An array of starship resources that this person has piloted
+          type: array
+          items: 
+            type: string
+            format: url
+        url:
+          description: The url of this resource
+          format: uri
+          type: string
+        vehicles:
+          description: An array of vehicle resources that this person has piloted
+          type: array
+          items: 
+            type: string
+            format: url
+      required:
+      - name
+      - height
+      - mass
+      - hair_color
+      - skin_color
+      - eye_color
+      - birth_year
+      - gender
+      - homeworld
+      - films
+      - species
+      - vehicles
+      - starships
+      - url
+      - created
+      - edited
+      title: People
+      type: object
+    planets:
+      description: A planet.
+      properties:
+        climate:
+          description: The climate of this planet. Comma-seperated if diverse.
+          type: string
+        created:
+          description: The ISO 8601 date format of the time that this resource was
+            created.
+          format: date-time
+          type: string
+        diameter:
+          description: The diameter of this planet in kilometers.
+          type: string
+        edited:
+          description: the ISO 8601 date format of the time that this resource was
+            edited.
+          format: date-time
+          type: string
+        films:
+          description: An array of Film URL Resources that this planet has appeared
+            in.
+          type: array
+          items: 
+            type: string
+            format: url
+        gravity:
+          description: A number denoting the gravity of this planet. Where 1 is normal.
+          type: string
+        name:
+          description: The name of this planet.
+          type: string
+        orbital_period:
+          description: The number of standard days it takes for this planet to complete
+            a single orbit of its local star.
+          type: string
+        population:
+          description: The average populationof sentient beings inhabiting this planet.
+          type: string
+        residents:
+          description: An array of People URL Resources that live on this planet.
+          type: array
+          items: 
+            type: string
+            format: url
+        rotation_period:
+          description: The number of standard hours it takes for this planet to complete
+            a single rotation on its axis.
+          type: string
+        surface_water:
+          description: The percentage of the planet surface that is naturally occuring
+            water or bodies of water.
+          type: string
+        terrain:
+          description: the terrain of this planet. Comma-seperated if diverse.
+          type: string
+        url:
+          description: The hypermedia URL of this resource.
+          format: uri
+          type: string
+      required:
+      - name
+      - rotation_period
+      - orbital_period
+      - diameter
+      - climate
+      - gravity
+      - terrain
+      - surface_water
+      - population
+      - residents
+      - films
+      - created
+      - edited
+      - url
+      title: Planet
+      type: object
+    species:
+      description: A species within the Star Wars universe
+      properties:
+        average_height:
+          description: The average height of this person in centimeters.
+          type: string
+        average_lifespan:
+          description: The average lifespan of this species in years.
+          type: string
+        classification:
+          description: The classification of this species.
+          type: string
+        created:
+          description: The ISO 8601 date format of the time that this resource was
+            created.
+          format: date-time
+          type: string
+        designation:
+          description: The designation of this species.
+          type: string
+        edited:
+          description: The ISO 8601 date format of the time that this resource was
+            edited.
+          format: date-time
+          type: string
+        eye_colors:
+          description: A comma-seperated string of common eye colors for this species,
+            none if this species does not typically have eyes.
+          type: string
+        films:
+          description: ' An array of Film URL Resources that this species has appeared
+            in.'
+          type: array
+          items: 
+            type: string
+            format: url
+        hair_colors:
+          description: A comma-seperated string of common hair colors for this species,
+            none if this species does not typically have hair.
+          type: string
+        homeworld:
+          description: The URL of a planet resource, a planet that this species originates
+            from.
+          type: string
+        language:
+          description: The language commonly spoken by this species.
+          type: string
+        name:
+          description: The name of this species.
+          type: string
+        people:
+          description: An array of People URL Resources that are a part of this species.
+          type: array
+          items: 
+            type: string
+            format: url
+        skin_colors:
+          description: A comma-seperated string of common skin colors for this species,
+            none if this species does not typically have skin.
+          type: string
+        url:
+          description: The hypermedia URL of this resource.
+          format: uri
+          type: string
+      required:
+      - name
+      - classification
+      - designation
+      - average_height
+      - average_lifespan
+      - hair_colors
+      - skin_colors
+      - eye_colors
+      - homeworld
+      - language
+      - people
+      - films
+      - url
+      - created
+      - edited
+      title: People
+      type: object
+    starships:
+      description: A Starship
+      properties:
+        MGLT:
+          description: The Maximum number of Megalights this starship can travel in
+            a standard hour. A Megalight is a standard unit of distance and has never
+            been defined before within the Star Wars universe. This figure is only
+            really useful for measuring the difference in speed of starships. We can
+            assume it is similar to AU, the distance between our Sun (Sol) and Earth.
+          type: string
+        cargo_capacity:
+          description: The maximum number of kilograms that this starship can transport.
+          type: string
+        consumables:
+          description: The maximum length of time that this starship can provide consumables
+            for its entire crew without having to resupply.
+          type: string
+        cost_in_credits:
+          description: The cost of this starship new, in galactic credits.
+          type: string
+        created:
+          description: The ISO 8601 date format of the time that this resource was
+            created.
+          format: date-time
+          type: string
+        crew:
+          description: The number of personnel needed to run or pilot this starship.
+          type: string
+        edited:
+          description: the ISO 8601 date format of the time that this resource was
+            edited.
+          format: date-time
+          type: string
+        films:
+          description: An array of Film URL Resources that this starship has appeared
+            in.
+          type: array
+          items: 
+            type: string
+            format: url
+        hyperdrive_rating:
+          description: The class of this starships hyperdrive.
+          type: string
+        length:
+          description: The length of this starship in meters.
+          type: string
+        manufacturer:
+          description: The manufacturer of this starship. Comma seperated if more
+            than one.
+          type: string
+        max_atmosphering_speed:
+          description: The maximum speed of this starship in atmosphere. n/a if this
+            starship is incapable of atmosphering flight.
+          type: string
+        model:
+          description: The model or official name of this starship. Such as T-65 X-wing
+            or DS-1 Orbital Battle Station.
+          type: string
+        name:
+          description: The name of this starship. The common name, such as Death Star.
+          type: string
+        passengers:
+          description: The number of non-essential people this starship can transport.
+          type: string
+        pilots:
+          description: An array of People URL Resources that this starship has been
+            piloted by.
+          type: array
+          items: 
+            type: string
+            format: url
+        starship_class:
+          description: The class of this starship, such as Starfighter or Deep Space
+            Mobile Battlestation.
+          type: string
+        url:
+          description: The hypermedia URL of this resource.
+          format: uri
+          type: string
+      required:
+      - name
+      - model
+      - manufacturer
+      - cost_in_credits
+      - length
+      - max_atmosphering_speed
+      - crew
+      - passengers
+      - cargo_capacity
+      - consumables
+      - hyperdrive_rating
+      - MGLT
+      - starship_class
+      - pilots
+      - films
+      - created
+      - edited
+      - url
+      title: Starship
+      type: object
+    vehicles:
+      description: A vehicle.
+      properties:
+        cargo_capacity:
+          description: The maximum number of kilograms that this vehicle can transport.
+          type: string
+        consumables:
+          description: The maximum length of time that this vehicle can provide consumables
+            for its entire crew without having to resupply.
+          type: string
+        cost_in_credits:
+          description: The cost of this vehicle new, in galactic credits.
+          type: string
+        created:
+          description: The ISO 8601 date format of the time that this resource was
+            created.
+          format: date-time
+          type: string
+        crew:
+          description: The number of personnel needed to run or pilot this vehicle.
+          type: string
+        edited:
+          description: the ISO 8601 date format of the time that this resource was
+            edited.
+          format: date-time
+          type: string
+        films:
+          description: An array of Film URL Resources that this vehicle has appeared
+            in.
+          type: array
+          items: 
+            type: string
+            format: url
+        length:
+          description: The length of this vehicle in meters.
+          type: string
+        manufacturer:
+          description: The manufacturer of this vehicle. Comma seperated if more than
+            one.
+          type: string
+        max_atmosphering_speed:
+          description: The maximum speed of this vehicle in atmosphere.
+          type: string
+        model:
+          description: The model or official name of this vehicle. Such as All Terrain
+            Attack Transport.
+          type: string
+        name:
+          description: The name of this vehicle. The common name, such as Sand Crawler.
+          type: string
+        passengers:
+          description: The number of non-essential people this vehicle can transport.
+          type: string
+        pilots:
+          description: An array of People URL Resources that this vehicle has been
+            piloted by.
+          type: array
+          items: 
+            type: string
+            format: url
+        url:
+          description: The hypermedia URL of this resource.
+          format: uri
+          type: string
+        vehicle_class:
+          description: The class of this vehicle, such as Wheeled.
+          type: string
+      required:
+      - name
+      - model
+      - manufacturer
+      - cost_in_credits
+      - length
+      - max_atmosphering_speed
+      - crew
+      - passengers
+      - cargo_capacity
+      - consumables
+      - vehicle_class
+      - pilots
+      - films
+      - created
+      - edited
+      - url
+      title: Starship
+      type: object
