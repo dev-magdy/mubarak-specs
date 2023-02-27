@@ -276,7 +276,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/starships'
-  /start:
+  /starships:
     get:
       tags:
       - starship
