@@ -2,8 +2,6 @@ openapi: 3.0.0
 servers:
   - description: USGS Earthquake
     url: https://earthquake.usgs.gov/fdsnws/event/1/
-
-
 info:
   version: "1.0.0"
   title: usgs-earthquake
@@ -20,8 +18,8 @@ paths:
           description: Application information
           content:
             application/xml:
-              schema:
-                type: string
+             schema:
+                $ref: '#/components/schemas/ApplicationResponse'
   /catalogs:
     get:
       operationId : catalogs
@@ -67,7 +65,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref : "#/components/schemas/CountResponse"
   /query:
     get:
       tags:
@@ -382,14 +380,144 @@ paths:
           schema:
             enum: ["automatic","reviewed"]
             type: string
-
-
-
-
       responses:
         '200':
           description: Earthquakes
           content:
             application/json:
               schema:
+                $ref : "#/components/schemas/QueryResponse"
+components:
+  schemas:
+      QueryResponse:
+        type: object
+        properties:
+          type:
+            type: string
+          metadata:
+            type: object
+            properties:
+              generated:
+                type: integer
+              url:
                 type: string
+              title:
+                type: string
+              status:
+                type: integer
+              api:
+                type: string
+              limit:
+                type: integer
+              offset:
+                type: integer
+              count:
+                type: integer
+          features:
+            type: array
+            items:
+              type: object
+              properties:
+                type:
+                  type: string
+                properties:
+                  type: object
+                  properties:
+                    mag:
+                      type: number
+                    place:
+                      type: string
+                    time:
+                      type: integer
+                    updated:
+                      type: integer
+                    tz:
+                      type: string
+                    url:
+                      type: string
+                    detail:
+                      type: string
+                    felt:
+                      type: string
+                    cdi:
+                      type: string
+                    mmi:
+                      type: string
+                    alert:
+                      type: string
+                    status:
+                      type: string
+                    tsunami:
+                      type: integer
+                    sig:
+                      type: integer
+                    net:
+                      type: string
+                    code:
+                      type: string
+                    ids:
+                      type: string
+                    sources:
+                      type: string
+                    types:
+                      type: string
+                    nst:
+                      type: integer
+                    dmin:
+                      type: number
+                    rms:
+                      type: number
+                    gap:
+                      type: integer
+                    magType:
+                      type: string
+                    type:
+                      type: string
+                    title:
+                      type: string
+                geometry:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    coordinates:
+                      type: array
+                      items:
+                        type: number
+                 
+                id:
+                  type: string
+
+      CountResponse:
+        type: object
+        properties:
+          count:
+            type: integer
+          maxAllowed:
+            type: integer
+
+      ApplicationResponse:
+        type: object
+        properties:
+          catalogs:
+            type: array
+            items:
+              type: string
+            
+          contributors:
+            type: array
+            items:
+              type: string
+          producttypes:
+            type: array
+            items:
+              type: string
+          eventtypes:
+            type: array
+            items:
+              type: string
+            
+          magnitudetypes:
+            type: array
+            items:
+              type: string
