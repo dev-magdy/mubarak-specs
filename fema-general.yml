@@ -1,0 +1,140 @@
+openapi: 3.0.0
+info:
+  description: FEMA collects vast amounts of data on multiple aspects of emergency management — Disaster Information, Individual Assistance, Public Assistance, Hazard Mitigation, National Flood Insurance Program (NFIP), and Grants. More information at [FEMA](https://www.fema.gov/about/openfema/api).
+  version: "1.0.0"
+  title: FEMA Disasters and Assistance
+servers:
+  - url: 'https://www.fema.gov/api/open'
+
+paths:
+  /{version}/{entity}/{_id}:
+    get:
+      summary: 'Get a single entity by Id'
+      operationId: missionAssignmentById
+      parameters: 
+        - in : path
+          name:  version
+          description: 'API version usually v1 or v2'
+          required: true
+          schema:
+            type: string
+        - in : path
+          name:  entity
+          description: 'the endtity to fetch e.g. MissionAssignments, DisasterDeclarationSummaries'
+          required: true
+          schema:
+            type: string
+        - in : path
+          name:  _id
+          description: 'This is a _id value of a previously identified record in an entity'
+          required: true
+          schema:
+            type: string
+        - in : query
+          name:  $format
+          description: 'Controls the format of the returned data.'
+          schema:
+            type: string
+            enum : 
+              - json
+              - csv
+              - jsona
+              - geojson
+            default: json
+      responses:
+        '200':
+          description: Entity
+          content:
+            application/json: 
+              schema:
+                type: string
+  /{version}/{entity}:
+    get:
+      summary: 'Get entities'
+      operationId: getEntities
+      parameters:
+        - in : path
+          name:  version
+          description: 'API version usually v1 or v2'
+          required: true
+          schema:
+            type: string
+        - in : path
+          name:  entity
+          description: 'the endtity to fetch e.g. MissionAssignments, DisasterDeclarationSummaries'
+          required: true
+          schema:
+            type: string
+        - in : query
+          name:  $skip
+          description: 'Number of records to skip from the dataset. Used in conjunction with $top to allow you to page through the dataset'
+          schema:
+            type: integer
+          example: 50
+        - in : query
+          name:  $top
+          description: 'Limits the number of records returned. Currently the default and maximum value is 1,000 records.'
+          schema:
+            type: integer
+          example: 50
+        - in : query
+          name:  $inlinecount
+          description: 'Query options that controls if a total count of all entities matching the request MUST be returned as part of the result.  Note, if the $inlinecount parameter is not supplied, no count will be returned; it will appear as “0”'
+          schema:
+            type: string
+            enum: 
+              - allpages
+              - none
+            default: none
+          example: allpages
+        - in : query
+          name:  $metadata
+          description: 'Controls the presence of the data set metadata object with a returned data set. Note, only applies if the format is JSON'
+          schema:
+            type: string
+            enum:
+              - off
+              - on
+            default: on
+          example: off
+        - in : query
+          name:  $orderby
+          description: 'Allows for the sorting of data on the server. By providing a comma separated list of fields and a sort direction you can control the order that data is returned. Available sort directions are “asc” and “desc” for ascending or descending respectively. If no direction is provided, ascending is the default'
+          schema:
+            type: string
+          example: "agency desc, city"
+        - in : query
+          name:  $select
+          description: 'Used to specify which fields you would like returned in your dataset. Providing a comma separated list of case sensitive field names will return just those fields. If no value is specified, all of the fields are returned.'
+          schema:
+            type: string
+          example: "agency,city"
+        - in : query
+          name:  $format
+          description: 'Controls the format of the returned data. Default is json'
+          schema:
+            type: string
+            enum : 
+              - json
+              - csv
+              - jsona
+              - geojson
+            default: json
+        - in : query
+          name:  $filter
+          description: 'Used to "filter" the results returned. The API provides a number of operations that can be used to build your request. The API provides as subset of the available options in the OData specification. Please note that dates should be represented in an ISO-8601 format.'
+          schema:
+            type: string
+          examples:       
+            equal:         
+              value: "declarationType eq 'DR'"
+              summary: example using eq (equal) operator
+          
+              
+      responses:
+        '200':
+          description: Mission Assignments
+          content:
+            application/json: 
+              schema:
+                type: string

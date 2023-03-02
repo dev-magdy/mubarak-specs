@@ -1,0 +1,399 @@
+openapi: 3.0.0
+info:
+  description: FEMA collects vast amounts of data on multiple aspects of emergency management — Disaster Information, Individual Assistance, Public Assistance, Hazard Mitigation, National Flood Insurance Program (NFIP), and Grants. More information at [FEMA](https://www.fema.gov/about/openfema/api).
+  version: "1.0.0"
+  title: FEMA Disasters and Assistance
+servers:
+  - url: 'https://www.fema.gov/api/open'
+
+paths:
+  /v1/MissionAssignments/{_id}:
+    get:
+      summary: 'Get a single mission assignment summary by Id'
+      operationId: missionAssignmentById
+      parameters: 
+        - in : path
+          name:  _id
+          description: 'This is a _id value of a previously identified record in an entity'
+          required: true
+          schema:
+            type: string
+          example : "f1970ade-2ce6-4200-ab11-88b134b47f04"
+        - in : query
+          name:  $format
+          description: 'Controls the format of the returned data.'
+          schema:
+            type: string
+            enum : 
+              - json
+              - csv
+              - jsona
+              - geojson
+            default: json
+      responses:
+        '200':
+          description: Mission Assignments
+          content:
+            application/json: 
+              schema:
+                type: object
+                properties:
+                  metadata: 
+                    $ref: "#/components/schemas/MetaData"
+                  MissionAssignments:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/MissionAssignment"
+  /v1/MissionAssignments:
+    get:
+      summary: 'Mission Assignment, as defined in the 44 Code of Federal Regulations, is a work order issued by FEMA to another Federal agency directing completion of a specified task and citing funding, other managerial controls, and guidance'
+      operationId: missionAssignments
+      parameters:
+        - in : query
+          name:  $skip
+          description: 'Number of records to skip from the dataset. Used in conjunction with $top to allow you to page through the dataset'
+          schema:
+            type: integer
+          example: 0
+        - in : query
+          name:  $top
+          description: 'Limits the number of records returned. Currently the default and maximum value is 1,000 records.'
+          schema:
+            type: integer
+          example: 1
+        - in : query
+          name:  $inlinecount
+          description: 'Query options that controls if a total count of all entities matching the request MUST be returned as part of the result.  Note, if the $inlinecount parameter is not supplied, no count will be returned; it will appear as “0”'
+          schema:
+            type: string
+            enum: 
+              - allpages
+              - none
+            default: none
+          example: allpages
+        - in : query
+          name:  $metadata
+          description: 'Controls the presence of the data set metadata object with a returned data set. Note, only applies if the format is JSON'
+          schema:
+            type: string
+            enum:
+              - off
+              - on
+            default: on
+          example: off
+        - in : query
+          name:  $orderby
+          description: 'Allows for the sorting of data on the server. By providing a comma separated list of fields and a sort direction you can control the order that data is returned. Available sort directions are “asc” and “desc” for ascending or descending respectively. If no direction is provided, ascending is the default'
+          schema:
+            type: string
+          example: "agency desc, city"
+        - in : query
+          name:  $select
+          description: 'Used to specify which fields you would like returned in your dataset. Providing a comma separated list of case sensitive field names will return just those fields. If no value is specified, all of the fields are returned.'
+          schema:
+            type: string
+          example: "agency,city"
+        - in : query
+          name:  $format
+          description: 'Controls the format of the returned data. Default is json'
+          schema:
+            type: string
+            enum : 
+              - json
+              - csv
+              - jsona
+              - geojson
+            default: json
+        - in : query
+          name:  $filter
+          description: 'Used to "filter" the results returned. The API provides a number of operations that can be used to build your request. The API provides as subset of the available options in the OData specification. Please note that dates should be represented in an ISO-8601 format.'
+          schema:
+            type: string
+          examples:       
+            equal:         
+              value: "declarationType eq 'DR'"
+              summary: example using eq (equal) operator
+          
+              
+      responses:
+        '200':
+          description: Mission Assignments
+          content:
+            application/json: 
+              schema:
+                type: object
+                properties:
+                  metadata: 
+                    $ref: "#/components/schemas/MetaData"
+                  MissionAssignments:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/MissionAssignment"
+  /v2/DisasterDeclarationsSummaries/{_id}:
+    get:
+      summary: 'Get a single disaster declaration summary by Id'
+      operationId: declarationSummaryById
+      parameters: 
+        - in : path
+          name:  _id
+          description: 'This is a _id value of a previously identified record in an entity'
+          required: true
+          schema:
+            type: string
+          example: "e671348b-9782-42df-99f4-d38b8b1a89e6"
+        - in : query
+          name:  $format
+          description: 'Controls the format of the returned data.'
+          schema:
+            type: string
+            enum : 
+              - json
+              - csv
+              - jsona
+              - geojson
+            default: json
+      responses:
+        '200':
+          description: Declaration Summmaries
+          content:
+            application/json: 
+              schema:
+                type: object
+                properties:
+                  metadata: 
+                    $ref: "#/components/schemas/MetaData"
+                  DisasterDeclarationsSummaries:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DeclarationSummary"
+  /v2/DisasterDeclarationsSummaries:
+    get:
+      summary: 'FEMA Disaster Declarations Summary is a summarized dataset describing all federally declared disasters. This dataset lists all official FEMA Disaster Declarations, beginning with the first disaster declaration in 1953 and features all three disaster declaration types: major disaster, emergency, and fire management assistance. The dataset includes declared recovery programs and geographic areas (county not available before 1964; Fire Management records are considered partial due to historical nature of the dataset).'
+      operationId: declarationSummaries
+      parameters:
+        - in : query
+          name:  $skip
+          description: 'Number of records to skip from the dataset. Used in conjunction with $top to allow you to page through the dataset'
+          schema:
+            type: integer
+          example: 0
+        - in : query
+          name:  $top
+          description: 'Limits the number of records returned. Currently the default and maximum value is 1,000 records.'
+          schema:
+            type: integer
+          example: 1
+        - in : query
+          name:  $inlinecount
+          description: 'Query options that controls if a total count of all entities matching the request MUST be returned as part of the result.  Note, if the $inlinecount parameter is not supplied, no count will be returned; it will appear as “0”'
+          schema:
+            type: string
+            enum: 
+              - allpages
+              - none
+            default: none
+          example: allpages
+        - in : query
+          name:  $metadata
+          description: 'Controls the presence of the data set metadata object with a returned data set. Note, only applies if the format is JSON'
+          schema:
+            type: string
+            enum:
+              - off
+              - on
+            default: on
+          example: off
+        - in : query
+          name:  $orderby
+          description: 'Allows for the sorting of data on the server. By providing a comma separated list of fields and a sort direction you can control the order that data is returned. Available sort directions are “asc” and “desc” for ascending or descending respectively. If no direction is provided, ascending is the default'
+          schema:
+            type: string
+          example: "state desc, designatedArea"
+        - in : query
+          name:  $select
+          description: 'Used to specify which fields you would like returned in your dataset. Providing a comma separated list of case sensitive field names will return just those fields. If no value is specified, all of the fields are returned.'
+          schema:
+            type: string
+          example: "disasterNumber,state,incidentBeginDate,incidentEndDate"
+        - in : query
+          name:  $format
+          description: 'Controls the format of the returned data. Default is json'
+          schema:
+            type: string
+            enum : 
+              - json
+              - csv
+              - jsona
+              - geojson
+            default: json
+        - in : query
+          name:  $filter
+          description: 'Used to "filter" the results returned. The API provides a number of operations that can be used to build your request. The API provides as subset of the available options in the OData specification. Please note that dates should be represented in an ISO-8601 format.'
+          schema:
+            type: string
+          examples:       
+            equal:         
+              value: "state eq 'VA'"
+              summary: example using eq (equal) operator
+            gt:
+              value: "declarationDate gt '1969-04-18T04:00:00.000z'"
+              summary: example using gt (greater than) operator
+            and:
+              value: "declarationDate ge '2010-01-01T04:00:00.000z' and state eq 'VA'"
+              summary: example using gt (greater than) operator
+            grouping:
+              value: "(state eq 'VA' and designatedArea eq 'Alleghany (County)') or disasterNumber eq 1570"
+              summary: example using grouping operator
+            substringof:
+              value: "substringof('OO',declarationTitle)"
+              summary: use substringof for string fields
+            endswith:
+              value: "endswith(declarationTitle ,'ING')"
+              summary: use endswith for string fields
+            startswith:
+              value: "startswith(declarationTitle ,'FLO')"
+              summary: use startswith for string fields
+              
+      responses:
+        '200':
+          description: Declaration Summmaries
+          content:
+            application/json: 
+              schema:
+                type: object
+                properties:
+                  metadata: 
+                    $ref: "#/components/schemas/MetaData"
+                  DisasterDeclarationsSummaries:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/DeclarationSummary"
+  
+components:
+  schemas:
+    MissionAssignment:
+      type: object
+      properties:
+        maId:
+          type: string
+        amendmentNumber:
+          type: integer
+        city:
+          type: string
+        stateorTribe:
+          type: string
+        zip:
+          type: string
+        disasterNumber:
+          type: integer
+        declarationType:
+          type: string
+        agency:
+          type: string
+        assistanceRequested:
+          type: string
+        statementOfWork:
+          type: string
+        disasterDescription:
+          type: string
+        authority:
+          type: string
+        dateRequested:
+          type: string
+        dateObligated:
+          type: string
+        stateCostSharePct:
+          type: integer
+        federalCostSharePct:
+          type: integer
+        stateCostShareAmt:
+          type: integer
+        federalCostShareAmt:
+          type: number
+        requestedAmount:
+          type: number
+        obligationAmount:
+          type: number
+        projectedCompletionDate:
+          type: string
+        id:
+          type: string
+
+    MetaData:
+      type: object
+      properties:
+        skip:
+          type: integer
+        filter:
+          type: string
+        orderby:
+          type: string
+        select:
+          type: string
+        rundate:
+          type: string
+        entityname:
+          type: string
+        version:
+          type: string
+        top:
+          type: integer
+        count:
+          type: integer
+        format:
+          type: string
+        metadata:
+          type: boolean
+        url:
+          type: string
+    DeclarationSummary:
+      type: object
+      properties:
+        femaDeclarationString:
+          type: string
+        disasterNumber:
+          type: integer
+        state:
+          type: string
+        declarationType:
+          type: string
+        declarationDate:
+          type: string
+        fyDeclared:
+          type: integer
+        incidentType:
+          type: string
+        declarationTitle:
+          type: string
+        ihProgramDeclared:
+          type: boolean
+        iaProgramDeclared:
+          type: boolean
+        paProgramDeclared:
+          type: boolean
+        hmProgramDeclared:
+          type: boolean
+        incidentBeginDate:
+          type: string
+        incidentEndDate:
+          type: string
+        disasterCloseoutDate:
+          type: string
+        fipsStateCode:
+          type: string
+        fipsCountyCode:
+          type: string
+        placeCode:
+          type: string
+        designatedArea:
+          type: string
+        declarationRequestNumber:
+          type: string
+        lastIAFilingDate:
+          type: string
+        hash:
+          type: string
+        id:
+          type: string
+        lastRefresh:
+          type: string
