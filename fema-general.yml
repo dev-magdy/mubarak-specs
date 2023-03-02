@@ -10,7 +10,7 @@ paths:
   /{version}/{entity}/{_id}:
     get:
       summary: 'Get a single entity by Id'
-      operationId: missionAssignmentById
+      operationId: entityById
       parameters: 
         - in : path
           name:  version
@@ -133,7 +133,7 @@ paths:
               
       responses:
         '200':
-          description: Mission Assignments
+          description: Entities
           content:
             application/json: 
               schema:
