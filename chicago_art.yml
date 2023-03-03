@@ -1,0 +1,3956 @@
+openapi: 3.0.0
+servers:
+- url: https://api.artic.edu/api/v1
+externalDocs:
+  description: 'See more documentation on our API here:'
+  url: https://api.artic.edu
+info:
+  contact:
+    email: engineering@artic.edu
+  description: An API for an aggregator of Art Institute of Chicago public data. 
+  license:
+    name: ''
+  termsOfService: https://www.artic.edu/terms/terms-and-conditions
+  title: Art Institution of Chicago API
+  version: 1.6-oas3
+
+paths:
+  /agent-roles:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AgentRole'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all agent-roles sorted by last updated date in descending
+        order.
+      tags:
+      - agent-roles
+      - collections
+  /agent-roles/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AgentRole'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single agent-role by the given identifier. {id} is the identifier
+        from our collections management system.
+      tags:
+      - agent-roles
+      - collections
+  /agent-types:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AgentType'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all agent-types sorted by last updated date in descending
+        order.
+      tags:
+      - agent-types
+      - collections
+  /agent-types/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/AgentType'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single agent-type by the given identifier. {id} is the identifier
+        from our collections management system.
+      tags:
+      - agent-types
+      - collections
+  /agents:
+    get:
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Agent'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all agents sorted by last updated date in descending order.
+      tags:
+      - agents
+      - collections
+  /agents/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search agents data in the aggregator. '
+      tags:
+      - agents
+      - collections
+      - search
+  /agents/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Agent'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single agent by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - agents
+      - collections
+  /articles:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Article'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all articles sorted by last updated date in descending order.
+      tags:
+      - articles
+      - web
+  /articles/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search articles data in the aggregator. '
+      tags:
+      - articles
+      - web
+      - search
+  /articles/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Article'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single article by the given identifier.
+      tags:
+      - articles
+      - web
+  /artists:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Agent'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all artists sorted by last updated date in descending order.
+      tags:
+      - agents
+      - collections
+  /artists/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Agent'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single artist by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - agents
+      - collections
+  /artwork-date-qualifiers:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArtworkDateQualifier'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all artwork-date-qualifiers sorted by last updated date in
+        descending order.
+      tags:
+      - artwork-date-qualifiers
+      - collections
+  /artwork-date-qualifiers/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArtworkDateQualifier'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single artwork-date-qualifier by the given identifier. {id} is the
+        identifier from our collections management system.
+      tags:
+      - artwork-date-qualifiers
+      - collections
+  /artwork-place-qualifiers:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArtworkPlaceQualifier'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all artwork-place-qualifiers sorted by last updated date
+        in descending order.
+      tags:
+      - artwork-place-qualifiers
+      - collections
+  /artwork-place-qualifiers/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArtworkPlaceQualifier'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single artwork-place-qualifier by the given identifier. {id} is the
+        identifier from our collections management system.
+      tags:
+      - artwork-place-qualifiers
+      - collections
+  /artwork-types:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArtworkType'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all artwork-types sorted by last updated date in descending
+        order.
+      tags:
+      - artwork-types
+      - collections
+  /artwork-types/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/ArtworkType'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single artwork-type by the given identifier. {id} is the identifier
+        from our collections management system.
+      tags:
+      - artwork-types
+      - collections
+  /artworks:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/ids'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/artworkInclude'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Artwork'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all artworks sorted by last updated date in descending order.
+      tags:
+      - artworks
+      - collections
+  /artworks/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: Search artworks data in the aggregator. Artworks in the groups of essentials
+        are boosted so they'll show up higher in results.
+      tags:
+      - artworks
+      - collections
+      - search
+  /artworks/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Artwork'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single artwork by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - artworks
+      - collections
+  /category-terms:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/CategoryTerm'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all category-terms sorted by last updated date in descending
+        order.
+      tags:
+      - category-terms
+      - collections
+  /category-terms/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search category-terms data in the aggregator. '
+      tags:
+      - category-terms
+      - collections
+      - search
+  /category-terms/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/CategoryTerm'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single category-term by the given identifier. {id} is the identifier
+        from our collections management system.
+      tags:
+      - category-terms
+      - collections
+  /digital-catalogs:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/DigitalCatalog'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all digital-catalogs sorted by last updated date in descending
+        order.
+      tags:
+      - digital-catalogs
+      - web
+  /digital-catalogs/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search digital-catalogs data in the aggregator. '
+      tags:
+      - digital-catalogs
+      - web
+      - search
+  /digital-catalogs/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/DigitalCatalog'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single digital-catalog by the given identifier.
+      tags:
+      - digital-catalogs
+      - web
+  /digital-publication-sections:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/DigitalPublicationSection'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all digital-publication-sections sorted by last updated date
+        in descending order.
+      tags:
+      - digital-publication-sections
+      - web
+  /digital-publication-sections/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search digital-publication-sections data in the aggregator. '
+      tags:
+      - digital-publication-sections
+      - web
+      - search
+  /digital-publication-sections/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/DigitalPublicationSection'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single digital-publication-section by the given identifier.
+      tags:
+      - digital-publication-sections
+      - web
+  /educator-resources:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/EducatorResource'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all educator-resources sorted by last updated date in descending
+        order.
+      tags:
+      - educator-resources
+      - web
+  /educator-resources/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search educator-resources data in the aggregator. '
+      tags:
+      - educator-resources
+      - web
+      - search
+  /educator-resources/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/EducatorResource'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single educator-resource by the given identifier.
+      tags:
+      - educator-resources
+      - web
+  /event-occurrences:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/EventOccurrence'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all event-occurrences sorted by last updated date in descending
+        order.
+      tags:
+      - event-occurrences
+      - web
+  /event-occurrences/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search event-occurrences data in the aggregator. '
+      tags:
+      - event-occurrences
+      - web
+      - search
+  /event-occurrences/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/EventOccurrence'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single event-occurrence by the given identifier.
+      tags:
+      - event-occurrences
+      - web
+  /event-programs:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/EventProgram'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all event-programs sorted by last updated date in descending
+        order.
+      tags:
+      - event-programs
+      - web
+  /event-programs/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search event-programs data in the aggregator. '
+      tags:
+      - event-programs
+      - web
+      - search
+  /event-programs/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/EventProgram'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single event-program by the given identifier.
+      tags:
+      - event-programs
+      - web
+  /events:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Event'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all events sorted by last updated date in descending order.
+      tags:
+      - events
+      - web
+  /events/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search events data in the aggregator. '
+      tags:
+      - events
+      - web
+      - search
+  /events/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Event'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single event by the given identifier.
+      tags:
+      - events
+      - web
+  /exhibitions:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Exhibition'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all exhibitions sorted by last updated date in descending
+        order.
+      tags:
+      - exhibitions
+      - collections
+  /exhibitions/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search exhibitions data in the aggregator. '
+      tags:
+      - exhibitions
+      - collections
+      - search
+  /exhibitions/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Exhibition'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single exhibition by the given identifier. {id} is the identifier
+        from our collections management system.
+      tags:
+      - exhibitions
+      - collections
+  /galleries:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Gallery'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all galleries sorted by last updated date in descending order.
+      tags:
+      - galleries
+      - collections
+  /galleries/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search galleries data in the aggregator. '
+      tags:
+      - galleries
+      - collections
+      - search
+  /galleries/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Gallery'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single gallery by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - galleries
+      - collections
+  /generic-pages:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/GenericPage'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all generic-pages sorted by last updated date in descending
+        order.
+      tags:
+      - generic-pages
+      - web
+  /generic-pages/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search generic-pages data in the aggregator. '
+      tags:
+      - generic-pages
+      - web
+      - search
+  /generic-pages/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/GenericPage'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single generic-page by the given identifier.
+      tags:
+      - generic-pages
+      - web
+  /highlights:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Highlight'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all highlights sorted by last updated date in descending
+        order.
+      tags:
+      - highlights
+      - web
+  /highlights/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search highlights data in the aggregator. '
+      tags:
+      - highlights
+      - web
+      - search
+  /highlights/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Highlight'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single highlight by the given identifier.
+      tags:
+      - highlights
+      - web
+  /images:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Image'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all images sorted by last updated date in descending order.
+      tags:
+      - images
+      - collections
+  /images/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search images data in the aggregator. '
+      tags:
+      - images
+      - collections
+      - search
+  /images/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Image'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single image by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - images
+      - collections
+  /mobile-sounds:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Sound'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all mobile-sounds sorted by last updated date in descending
+        order.
+      tags:
+      - mobile-sounds
+      - mobile
+  /mobile-sounds/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search mobile-sounds data in the aggregator. '
+      tags:
+      - mobile-sounds
+      - mobile
+      - search
+  /mobile-sounds/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Sound'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single mobile-sound by the given identifier.
+      tags:
+      - mobile-sounds
+      - mobile
+  /places:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Place'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all places sorted by last updated date in descending order.
+      tags:
+      - places
+      - collections
+  /places/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: Search places data in the aggregator.
+      tags:
+      - places
+      - collections
+      - search
+  /places/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Place'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single place by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - places
+      - collections
+  /press-releases:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/PressRelease'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all press-releases sorted by last updated date in descending
+        order.
+      tags:
+      - press-releases
+      - web
+  /press-releases/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search press-releases data in the aggregator. '
+      tags:
+      - press-releases
+      - web
+      - search
+  /press-releases/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/PressRelease'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single press-release by the given identifier.
+      tags:
+      - press-releases
+      - web
+  /printed-catalogs:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/PrintedCatalog'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all printed-catalogs sorted by last updated date in descending
+        order.
+      tags:
+      - printed-catalogs
+      - web
+  /printed-catalogs/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search printed-catalogs data in the aggregator. '
+      tags:
+      - printed-catalogs
+      - web
+      - search
+  /printed-catalogs/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/PrintedCatalog'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single printed-catalog by the given identifier.
+      tags:
+      - printed-catalogs
+      - web
+  /products:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Product'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all products sorted by last updated date in descending order.
+      tags:
+      - products
+      - shop
+  /products/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search products data in the aggregator. '
+      tags:
+      - products
+      - shop
+      - search
+  /products/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Product'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single product by the given identifier.
+      tags:
+      - products
+      - shop
+  /publications:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Publication'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all publications sorted by last updated date in descending
+        order.
+      tags:
+      - publications
+      - dsc
+  /publications/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search publications data in the aggregator. '
+      tags:
+      - publications
+      - dsc
+      - search
+  /publications/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Publication'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single publication by the given identifier.
+      tags:
+      - publications
+      - dsc
+  #/search:
+  #  get:
+  #    parameters:
+  #    - $ref: '#/components/parameters/q'
+  #    - $ref: '#/components/parameters/query'
+  #    - $ref: '#/components/parameters/sort'
+  #    - $ref: '#/components/parameters/from'
+  #    - $ref: '#/components/parameters/size'
+  #   - $ref: '#/components/parameters/facets'
+  #    responses:
+  #     '200':
+  #        content:
+  #          'application/json':
+  #           schema:
+  #              items:
+  #                $ref: '#/components/schemas/SearchResult'
+  #              type: array
+  #        description: Successful operation
+  #     default:
+  #        content:
+  #         'application/json':
+  #            schema:
+  #              $ref: '#/components/schemas/Error'
+  #        description: error
+  #    summary: Search all data in the aggregator
+  #    tags:
+  #    - search
+  /sections:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Section'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all sections sorted by last updated date in descending order.
+      tags:
+      - sections
+      - dsc
+  /sections/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search sections data in the aggregator. '
+      tags:
+      - sections
+      - dsc
+      - search
+  /sections/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Section'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single section by the given identifier.
+      tags:
+      - sections
+      - dsc
+  /sites:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Site'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all sites sorted by last updated date in descending order.
+      tags:
+      - sites
+      - ''
+  /sites/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search sites data in the aggregator. '
+      tags:
+      - sites
+      - ''
+      - search
+  /sites/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Site'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single site by the given identifier.
+      tags:
+      - sites
+      - ''
+  /sounds:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Sound'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all sounds sorted by last updated date in descending order.
+      tags:
+      - sounds
+      - collections
+  /sounds/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search sounds data in the aggregator. '
+      tags:
+      - sounds
+      - collections
+      - search
+  /sounds/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Sound'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single sound by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - sounds
+      - collections
+  /static-pages:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/StaticPage'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all static-pages sorted by last updated date in descending
+        order.
+      tags:
+      - static-pages
+      - web
+  /static-pages/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search static-pages data in the aggregator. '
+      tags:
+      - static-pages
+      - web
+      - search
+  /static-pages/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/StaticPage'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single static-page by the given identifier.
+      tags:
+      - static-pages
+      - web
+  /texts:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Text'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all texts sorted by last updated date in descending order.
+      tags:
+      - texts
+      - collections
+  /texts/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search texts data in the aggregator. '
+      tags:
+      - texts
+      - collections
+      - search
+  /texts/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Text'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single text by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - texts
+      - collections
+  /tours:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Tour'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all tours sorted by last updated date in descending order.
+      tags:
+      - tours
+      - mobile
+  /tours/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search tours data in the aggregator. '
+      tags:
+      - tours
+      - mobile
+      - search
+  /tours/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Tour'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single tour by the given identifier.
+      tags:
+      - tours
+      - mobile
+  /videos:
+    get:
+      parameters: []
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Video'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A list of all videos sorted by last updated date in descending order.
+      tags:
+      - videos
+      - collections
+  /videos/search:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/q'
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/size'
+      - $ref: '#/components/parameters/facets'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: 'Search videos data in the aggregator. '
+      tags:
+      - videos
+      - collections
+      - search
+  /videos/{id}:
+    get:
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Video'
+                type: array
+          description: Successful operation
+        default:
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: error
+      summary: A single video by the given identifier. {id} is the identifier from
+        our collections management system.
+      tags:
+      - videos
+      - collections
+
+components:
+  schemas:
+    Agent:
+      properties:
+        alt_titles:
+          description: Alternate names for this agent
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        birth_date:
+          description: The year this agent was born
+        death_date:
+          description: The year this agent died
+        description:
+          description: A biographical description of the agent
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        is_artist:
+          description: Whether the agent is an artist. Solely based on whether the agent
+            is related to an artwork record.
+        sort_title:
+          description: Sortable name for this agent, typically with last name first.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        ulan_id:
+          description: Unique identifier of this agent in Getty's ULAN
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    AgentRole:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    AgentType:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    Article:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        copy:
+          description: The text of the article
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    Artwork:
+      properties:
+        alt_artist_ids:
+          description: Unique identifiers of the non-preferred artists/cultures associated
+            with this work
+        alt_classification_ids:
+          description: Unique identifiers of all other non-preferred classification
+            terms for this work
+        alt_image_ids:
+          description: Unique identifiers of all non-preferred images of this work.
+        alt_material_ids:
+          description: Unique identifiers of all other non-preferred material terms
+            for this work
+        alt_style_ids:
+          description: Unique identifiers of all other non-preferred style terms for
+            this work
+        alt_subject_ids:
+          description: Unique identifiers of all other non-preferred subject terms for
+            this work
+        alt_technique_ids:
+          description: Unique identifiers of all other non-preferred technique terms
+            for this work
+        alt_titles:
+          description: Alternate names for this work
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artist_display:
+          description: Readable description of the creator of this work. Includes artist
+            names, nationality and lifespan dates
+        artist_id:
+          description: Unique identifier of the preferred artist/culture associated
+            with this work
+        artist_ids:
+          description: Unique identifier of all artist/cultures associated with this
+            work
+        artist_title:
+          description: Name of the preferred artist/culture associated with this work
+        artist_titles:
+          description: Names of all artist/cultures associated with this work
+        artwork_type_id:
+          description: Unique identifier of the kind of object or work
+        artwork_type_title:
+          description: The kind of object or work (e.g. Painting, Sculpture, Book)
+        boost_rank:
+          description: Manual indication of what rank this artwork should take in search
+            results. Noncontiguous.
+        catalogue_display:
+          description: "Brief text listing all the catalogues raisonn\xE9s which include
+            this work. This isn't an exhaustive list of publications where the work
+            has been mentioned. For that, see `publication_history`."
+        category_ids:
+          description: Unique identifiers of the categories this work is a part of
+        category_titles:
+          description: Names of the categories this artwork is a part of
+        classification_id:
+          description: Unique identifier of the preferred classification term for this
+            work
+        classification_ids:
+          description: Unique identifiers of all classification terms for this work
+        classification_title:
+          description: The name of the preferred classification term for this work
+        classification_titles:
+          description: The names of all classification terms related to this artwork
+        color:
+          description: Dominant color of this artwork in HSL
+        colorfulness:
+          description: Unbounded positive float representing an abstract measure of
+            colorfulness.
+        copyright_notice:
+          description: Statement notifying how the work is protected by copyright. Applies
+            to the work itself, not image or other related assets.
+        credit_line:
+          description: Brief statement indicating how the work came into the collection
+        date_display:
+          description: 'Readable, free-text description of the period of time associated
+            with the creation of this work. This might include date terms like Dynasty,
+            Era etc. Written by curators and editors in house style, and is the preferred
+            field for display on websites and apps. '
+        date_end:
+          description: The year of the period of time associated with the creation of
+            this work
+        date_qualifier_id:
+          description: Unique identifier of the qualifer to the dates provided for this
+            record.
+        date_qualifier_title:
+          description: Readable, text qualifer to the dates provided for this record.
+        date_start:
+          description: The year of the period of time associated with the creation of
+            this work
+        department_id:
+          description: Unique identifier of the curatorial department that this work
+            belongs to
+        department_title:
+          description: Name of the curatorial department that this work belongs to
+        description:
+          description: Longer explanation describing the work
+        dimensions:
+          description: The size, shape, scale, and dimensions of the work. May include
+            multiple dimensions like overall, frame, or dimension for each section of
+            a work. Free-form text formatted in a house style.
+        document_ids:
+          description: Unique identifiers of assets that serve as documentation for
+            this artwork
+        exhibition_history:
+          description: List of all the places this work has been exhibited
+        fiscal_year:
+          description: The fiscal year in which the work was acquired.
+        fiscal_year_deaccession:
+          description: The fiscal year in which the work was deaccessioned.
+        gallery_id:
+          description: Unique identifier of the location of this work in our museum
+        gallery_title:
+          description: The location of this work in our museum
+        has_advanced_imaging:
+          description: Whether this artwork is enhanced with 3D models, 360 image sequences,
+            Mirador views, etc.
+        has_educational_resources:
+          description: Whether this artwork has any documents tagged as educational
+        has_multimedia_resources:
+          description: Whether this artwork has any associated microsites, digital publications,
+            or documents tagged as multimedia
+        has_not_been_viewed_much:
+          description: Whether the artwork hasn't been visited on our website very much
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        image_id:
+          description: Unique identifier of the preferred image to use to represent
+            this work
+        inscriptions:
+          description: A description of distinguishing or identifying physical markings
+            that are on the work
+        internal_department_id:
+          description: An internal department id we use for analytics. Does not correspond
+            to departments on the website.
+        is_boosted:
+          description: Whether this document should be boosted in search
+        is_on_view:
+          description: Whether the work is on display
+        is_public_domain:
+          description: Whether the work is in the public domain, meaning it was created
+            before copyrights existed or has left the copyright term
+        is_zoomable:
+          description: Whether images of the work are allowed to be displayed in a zoomable
+            interface.
+        latitude:
+          description: Latitude coordinate of the location of this work in our galleries
+        latlon:
+          description: Latitude and longitude coordinates of the location of this work
+            in our galleries
+        longitude:
+          description: Longitude coordinate of the location of this work in our galleries
+        main_reference_number:
+          description: Unique identifier assigned to the artwork upon acquisition
+        material_id:
+          description: Unique identifier of the preferred material term for this work
+        material_ids:
+          description: Unique identifiers of all material terms for this work
+        material_titles:
+          description: The names of all material terms related to this artwork
+        max_zoom_window_size:
+          description: The maximum size of the window the image is allowed to be viewed
+            in, in pixels.
+        medium_display:
+          description: The substances or materials used in the creation of a work
+        on_loan_display:
+          description: If an artwork is on loan, this contains details about the loan
+        pageviews:
+          description: Approx. number of times this artwork was viewed on our website
+            since Jan 1st, 2010
+        pageviews_recent:
+          description: Approx. number of times this artwork was viewed on our website
+            over the past three months
+        place_of_origin:
+          description: The location where the creation, design, or production of the
+            work took place, or the original location of the work
+        provenance_text:
+          description: Ownership/collecting history of the work. May include names of
+            owners, dates, and possibly methods of transfer of ownership. Free-form
+            text formatted in a house style.
+        publication_history:
+          description: Bibliographic list of all the places this work has been published
+        publishing_verification_level:
+          description: Indicator of how much metadata on the work in published. Web
+            Basic is the least amount, Web Everything is the greatest.
+        section_ids:
+          description: Unique identifiers of the digital publication chapters this work
+            in included in
+        section_titles:
+          description: Names of the digital publication chapters this work is included
+            in
+        site_ids:
+          description: Unique identifiers of the microsites this work is a part of
+        sound_ids:
+          description: Unique identifiers of the audio about this work
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        style_id:
+          description: Unique identifier of the preferred style term for this work
+        style_ids:
+          description: Unique identifiers of all style terms for this work
+        style_title:
+          description: The name of the preferred style term for this work
+        style_titles:
+          description: The names of all style terms related to this artwork
+        subject_id:
+          description: Unique identifier of the preferred subject term for this work
+        subject_ids:
+          description: Unique identifiers of all subject terms for this work
+        subject_titles:
+          description: The names of all subject terms related to this artwork
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        technique_id:
+          description: Unique identifier of the preferred technique term for this work
+        technique_ids:
+          description: Unique identifiers of all technique terms for this work
+        technique_titles:
+          description: The names of all technique terms related to this artwork
+        term_titles:
+          description: The names of the taxonomy tags for this work
+        text_ids:
+          description: Unique identifiers of the texts about this work
+        theme_titles:
+          description: The names of all thematic publish categories related to this
+            artwork
+        thumbnail:
+          description: Metadata about the image referenced by `image_id`. Currently,
+            all thumbnails are IIIF images. You must build your own image URLs using
+            IIIF Image API conventions. See our API documentation for more details.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        video_ids:
+          description: Unique identifiers of the videos about this work
+      type: object
+    ArtworkDateQualifier:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    ArtworkPlaceQualifier:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    ArtworkType:
+      properties:
+        aat_id:
+          description: Identifier of reconciled (most similar) term in the Getty's Art
+            and Architecture Thesaurus (AAT)
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    CategoryTerm:
+      properties:
+        aat_id:
+          description: Identifier of reconciled (most similar) term in the Getty's Art
+            and Architecture Thesaurus (AAT)
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        parent_id:
+          description: Unique identifier of this category's parent
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        subtype:
+          description: 'Takes one of the following values: classification, material,
+            technique, style, subject, department, theme'
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    DigitalCatalog:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        copy:
+          description: The text of the page
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: The URL to this page on our website
+      type: object
+    DigitalPublicationSection:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        author_display:
+          description: A display-friendly text of the authors of this section
+        copy:
+          description: The text of the section
+        digital_publication_id:
+          description: Unique identifier of the digital publication this section belongs
+            to
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: The URL to this section on our website
+      type: object
+    EducatorResource:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        copy:
+          description: The text of the page
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: The URL to this page on our website
+      type: object
+    Error:
+      properties:
+        detail:
+          type: string
+        error:
+          type: string
+        status:
+          type: integer
+      required:
+      - status
+      - error
+      - detail
+    Event:
+      properties:
+        alt_audience_ids:
+          description: Unique identifiers indicating the alternate audiences for this
+            event
+        alt_event_type_ids:
+          description: Unique identifiers indicating the alternate types of this event
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        audience_id:
+          description: Unique identifier indicating the preferred audience for this
+            event
+        buy_button_caption:
+          description: Additional text below the ticket/registration button
+        buy_button_text:
+          description: The text used on the ticket/registration button
+        date_display:
+          description: A readable display of the event dates
+        description:
+          description: All copytext of the event
+        door_time:
+          description: The time the doors open for this event
+        end_date:
+          description: The date the event ends
+        end_time:
+          description: The time the event ends
+        entrance:
+          description: Which entrance to use for this event
+        event_host_id:
+          description: Unique identifier of the host (cf. event programs) that is presenting
+            this event
+        event_host_title:
+          description: Unique identifier of the host (cf. event programs) that is presenting
+            this event
+        event_type_id:
+          description: Unique identifier indicating the preferred type of this event
+        header_description:
+          description: Brief description of the event displayed below the title
+        hero_caption:
+          description: Text displayed with the hero image on the event
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        image_url:
+          description: The URL of an image representing this page
+        is_admission_required:
+          description: Whether admission to the museum is required to attend this event
+        is_after_hours:
+          description: Whether the event is to be held after the museum closes
+        is_free:
+          description: Whether the event is free
+        is_member_exclusive:
+          description: Whether the event is exclusive to members of the museum
+        is_private:
+          description: Whether the event is private
+        is_registration_required:
+          description: Whether registration is required to attend the event
+        is_sold_out:
+          description: Whether the event is sold out
+        is_ticketed:
+          description: Whether a ticket is required to attend the event
+        is_virtual_event:
+          description: Whether the event is being held virtually
+        join_url:
+          description: URL to the membership signup page via this event
+        layout_type:
+          description: Number indicating the type of layout this event page uses
+        list_description:
+          description: One-sentence description of the event displayed in listings
+        location:
+          description: Where the event takes place
+        program_ids:
+          description: Unique identifiers indicating the programs this event is a part
+            of
+        program_titles:
+          description: Titles of the programs this event is a part of
+        rsvp_link:
+          description: The URL to the sales site for this event
+        search_tags:
+          description: Editor-specified list of tags to aid in internal search
+        short_description:
+          description: Brief description of the event
+        slug:
+          description: A string used in the URL for this event
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        start_date:
+          description: The date the event begins
+        start_time:
+          description: The time the event starts
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        survey_url:
+          description: URL to the survey associated with this event
+        ticketed_event_id:
+          description: Unique identifier of the event in the ticketing system this website
+            event is tied to
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        title_display:
+          description: The name of this event formatted with HTML (optional)
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        virtual_event_passcode:
+          description: Passcode to access the virtual event
+        virtual_event_url:
+          description: URL to the virtual event
+      type: object
+    EventOccurrence:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        button_caption:
+          description: Additional text below the ticket/registration button
+        button_text:
+          description: The text used on the ticket/registration button
+        button_url:
+          description: The URL to the sales site or an RSVP link for this event
+        description:
+          description: Description of the event
+        end_at:
+          description: The date the event occurrence ends
+        event_id:
+          description: Identifier of the master event of which this is an occurrence
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        image_url:
+          description: The URL of an image representing this page
+        is_private:
+          description: Whether the event is private. Private events should be omitted
+            from listings.
+        location:
+          description: Where the event takes place
+        short_description:
+          description: Brief description of the event
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        start_at:
+          description: The date the event occurrence begins
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    EventProgram:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        is_affiliate_group:
+          description: Whether this program represents an affiliate group
+        is_event_host:
+          description: Whether this program represents an event host
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    Exhibition:
+      properties:
+        aic_end_at:
+          description: Date the exhibition closed at the Art Institute of Chicago
+        aic_start_at:
+          description: Date the exhibition opened at the Art Institute of Chicago
+        alt_image_ids:
+          description: Unique identifiers of all non-preferred images of this exhibition.
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artist_ids:
+          description: Unique identifiers of the artist agent records representing who
+            was shown in the exhibition
+        artwork_ids:
+          description: Unique identifiers of the artworks that were part of the exhibition
+        artwork_titles:
+          description: Names of the artworks that were part of the exhibition
+        document_ids:
+          description: Unique identifiers of assets that serve as documentation for
+            this exhibition
+        gallery_id:
+          description: Unique identifier of the gallery that mainly housed the exhibition
+        gallery_title:
+          description: The name of the gallery that mainly housed the exhibition
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        image_id:
+          description: Unique identifier of the preferred image to use to represent
+            this exhibition
+        image_url:
+          description: URL to the hero image from the website
+        is_featured:
+          description: Is this exhibition currently featured on our website?
+        is_published:
+          description: Is this exhibition currently published on our website? Only relevant
+            for non-past exhibitions.
+        short_description:
+          description: Brief explanation of what this exhibition is
+        site_ids:
+          description: Unique identifiers of the microsites this exhibition is a part
+            of
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        status:
+          description: Whether the exhibition is open or closed
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: URL to this exhibition on our website
+      type: object
+    Gallery:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        floor:
+          description: The level the gallery is on, e.g., 1, 2, 3, or LL
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        is_closed:
+          description: Whether the gallery is currently closed
+        latitude:
+          description: Latitude coordinate of the center of the room
+        latlon:
+          description: Latitude and longitude coordinates of the center of the room
+        longitude:
+          description: Longitude coordinate of the center of the room
+        number:
+          description: The gallery's room number. For "Gallery 100A", this would be
+            "100A".
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        tgn_id:
+          description: Reconciled identifier of this object in the Getty's Thesauraus
+            of Geographic Names (TGN)
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    GenericPage:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        copy:
+          description: The text of the page
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        search_tags:
+          description: Editor-specified list of tags to aid in internal search
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: The URL to this page on our website
+      type: object
+    Highlight:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        copy:
+          description: The text of the highlight description
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    Image:
+      properties:
+        ahash:
+          description: Image hash generated using ahash algorithm with 64 boolean subfields
+        alt_text:
+          description: Alternative text for the asset to describe it to people with
+            low or no vision
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artwork_ids:
+          description: Unique identifiers of the artworks associated with this asset
+        artwork_titles:
+          description: Names of the artworks associated with this asset
+        color:
+          description: Dominant color of this image in HSL
+        colorfulness:
+          description: Unbounded positive float representing an abstract measure of
+            colorfulness.
+        content:
+          description: Text of or URL to the contents of this asset
+        content_e_tag:
+          description: Arbitrary unique identifier that changes when the binary file
+            gets updated
+        credit_line:
+          description: Asset-specific copyright information
+        fingerprint:
+          description: 'Image hashes: aHash, dHash, pHash, wHash'
+        height:
+          description: Native height of the image
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        iiif_url:
+          description: IIIF URL of this image
+        is_educational_resource:
+          description: Whether this resource is considered to be educational
+        is_multimedia_resource:
+          description: Whether this resource is considered to be multimedia
+        is_teacher_resource:
+          description: Whether this resource is considered to be educational
+        lake_guid:
+          description: Unique UUID of this resource in LAKE, our DAMS.
+        lqip:
+          description: Low-quality image placeholder (LQIP). Currently a 5x5-constrained,
+            base64-encoded GIF.
+        phash:
+          description: Image hash generated using phash algorithm with 64 boolean subfields
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        type:
+          description: 'Type always takes one of the following values: image, sound,
+            text, video'
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        width:
+          description: Native width of the image
+      type: object
+    Place:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        latitude:
+          description: Latitude coordinate of the center of the room
+        longitude:
+          description: Longitude coordinate of the center of the room
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        tgn_id:
+          description: Reconciled identifier of this object in the Getty's Thesauraus
+            of Geographic Names (TGN)
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    PressRelease:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        copy:
+          description: The text of the page
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: The URL to this page on our website
+      type: object
+    PrintedCatalog:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        copy:
+          description: The text of the page
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: The URL to this page on our website
+      type: object
+    Product:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artist_ids:
+          description: Unique identifiers of the artists associated with this product
+        artwork_ids:
+          description: Unique identifiers of the artworks associated with this product
+        description:
+          description: Explanation of what this product is
+        exhibition_ids:
+          description: Unique identifiers of the exhibitions associated with this product
+        external_sku:
+          description: Numeric product identification code of a machine-readable barcode,
+            when the customer sku differs from our internal one
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        image_url:
+          description: URL of an image for this product
+        max_compare_at_price:
+          description: Number indicating how much the most expensive variant of a product
+            cost before a sale
+        max_current_price:
+          description: Number indicating how much the most expensive variant of a product
+            costs right now
+        min_compare_at_price:
+          description: Number indicating how much the least expensive variant of a product
+            cost before a sale
+        min_current_price:
+          description: Number indicating how much the least expensive variant of a product
+            costs right now
+        price_display:
+          description: Explanation of what this product is
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: URL of this product in the shop
+      type: object
+    Publication:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        section_ids:
+          description: Unique identifiers of the sections of this publication
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: URL to the publication
+      type: object
+    SearchResult:
+      properties:
+        _score:
+          description: Search index ranking of the result
+        api_id:
+          description: API unique identifier
+        api_link:
+          description: URL to this recource in the API
+        api_model:
+          description: Name of the model the resource represents
+        id:
+          description: Unique identifier within the search index
+        is_boosted:
+          description: Whether this record has been flagged to be boosted
+        thumbnail:
+          description: Metadata on the image representing this record
+        timestamp:
+          description: Date this record was last updated in the API
+        title:
+          description: The name of this resource
+      type: object
+    Section:
+      properties:
+        accession:
+          description: An accession number parsed from the title or tombstone
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artwork_id:
+          description: Unique identifier of the artwork with which this section is associated
+        content:
+          description: Content of this section in plaintext
+        generic_page_id:
+          description: Unique identifier of the page on the website that represents
+            the publication this section belongs to
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        publication_id:
+          description: Unique identifier of the publication this section belongs to
+        publication_title:
+          description: Name of the publication this section belongs to
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: URL to the section
+      type: object
+    Site:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artwork_ids:
+          description: Unique identifiers of the artworks this site is associated with
+        artwork_titles:
+          description: Names of the artworks this site is associated with
+        description:
+          description: Explanation of what this site is
+        exhibition_ids:
+          description: Unique identifier of the exhibitions this site is associated
+            with
+        exhibition_titles:
+          description: Names of the exhibitions this site is associated with
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: URL to this site
+      type: object
+    Sound:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: "Name of this mobile audio file \u2013 derived from the artwork
+            and tour titles"
+        transcript:
+          description: Text transcription of the audio file
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: URL to the audio file
+      type: object
+    StaticPage:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        web_url:
+          description: The URL to this page on our website
+      type: object
+    Text:
+      properties:
+        alt_text:
+          description: Alternative text for the asset to describe it to people with
+            low or no vision
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artwork_ids:
+          description: Unique identifiers of the artworks associated with this asset
+        artwork_titles:
+          description: Names of the artworks associated with this asset
+        content:
+          description: Text of or URL to the contents of this asset
+        content_e_tag:
+          description: Arbitrary unique identifier that changes when the binary file
+            gets updated
+        credit_line:
+          description: Asset-specific copyright information
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        is_educational_resource:
+          description: Whether this resource is considered to be educational
+        is_multimedia_resource:
+          description: Whether this resource is considered to be multimedia
+        is_teacher_resource:
+          description: Whether this resource is considered to be educational
+        lake_guid:
+          description: Unique UUID of this resource in LAKE, our DAMS.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        type:
+          description: 'Type always takes one of the following values: image, sound,
+            text, video'
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+    Tour:
+      properties:
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artist_titles:
+          description: Names of the artists of the artworks featured in this tour's
+            tour stops
+        artwork_titles:
+          description: Names of the artworks featured in this tour's tour stops
+        description:
+          description: Explanation of what the tour is
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        image:
+          description: The main image for the tour
+        intro:
+          description: Text introducing the tour
+        intro_link:
+          description: Link to the audio file of the introduction
+        intro_transcript:
+          description: Transcript of the introduction audio to the tour
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+        weight:
+          description: Number representing this tour's sort order
+      type: object
+    Video:
+      properties:
+        alt_text:
+          description: Alternative text for the asset to describe it to people with
+            low or no vision
+        api_link:
+          description: REST API link for this resource
+        api_model:
+          description: REST API resource type or endpoint
+        artwork_ids:
+          description: Unique identifiers of the artworks associated with this asset
+        artwork_titles:
+          description: Names of the artworks associated with this asset
+        content:
+          description: Text of or URL to the contents of this asset
+        content_e_tag:
+          description: Arbitrary unique identifier that changes when the binary file
+            gets updated
+        credit_line:
+          description: Asset-specific copyright information
+        id:
+          description: Unique identifier of this resource. Taken from the source system.
+        is_educational_resource:
+          description: Whether this resource is considered to be educational
+        is_multimedia_resource:
+          description: Whether this resource is considered to be multimedia
+        is_teacher_resource:
+          description: Whether this resource is considered to be educational
+        lake_guid:
+          description: Unique UUID of this resource in LAKE, our DAMS.
+        source_updated_at:
+          description: Date and time the resource was updated in the source system
+        suggest_autocomplete_all:
+          description: Internal field to power the `/autosuggest` endpoint. Do not use
+            directly.
+        suggest_autocomplete_boosted:
+          description: Internal field to power the `/autocomplete` endpoint. Do not
+            use directly.
+        timestamp:
+          description: Date and time the record was updated in the aggregator search
+            index
+        title:
+          description: The name of this resource
+        type:
+          description: 'Type always takes one of the following values: image, sound,
+            text, video'
+        updated_at:
+          description: Date and time the record was updated in the aggregator database
+      type: object
+  parameters:
+    facets:
+      description: A comma-separated list of 'count' aggregation facets to include
+        in the results.
+      in: query
+      name: facets
+      schema:
+        type: string
+    fields:
+      description: A comma-separated list of fields to return per resource
+      in: query
+      name: fields
+      schema:
+        type: string
+    artworkInclude:
+      description: A comma-separated list of subresource to embed in the returned resources
+      in: query
+      name: include
+      schema:
+        type: string
+        enum:
+          - artist_pivots
+          - dates
+          - place_pivots
+          - sites
+    from:
+      description: Starting point of results. Pagination via Elasticsearch conventions
+      in: query
+      name: from
+      schema:
+        type: string
+    id:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      example: 1
+    ids:
+      description: A comma-separated list of resource ids to retrieve
+      in: query
+      name: ids
+      schema:
+        type: string
+      example: "1,2,3"
+    limit:
+      description: The number of resources to return per page
+      in: query
+      name: limit
+      schema:
+        type: integer
+      example: 1
+    page:
+      description: The page of resources to retrieve
+      in: query
+      name: page
+      schema:
+        type: integer
+      example: 1
+    q:
+      description: Your search query
+      in: query
+      name: q
+      schema:
+        type: string
+      example: 'art'
+    query:
+      description: For complex queries, you can pass Elasticsearch domain syntax queries
+        here
+      in: query
+      name: query
+      schema:
+        type: string
+    size:
+      description: Number of results to return. Pagination via Elasticsearch conventions
+      in: query
+      name: size
+      schema:
+        type: string
+      example: 1
+    sort:
+      description: Used in conjunction with `query`
+      in: query
+      name: sort
+      schema:
+        type: string
