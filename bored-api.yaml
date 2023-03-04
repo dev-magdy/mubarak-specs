@@ -12,7 +12,7 @@ paths:
   /api/activity:
     get:
       summary: Get a random activity
-      operationId: api-activity
+      operationId: activity
       parameters:
         - in: query
           name: type
@@ -20,6 +20,55 @@ paths:
             type: string
             enum: [education, recreational, social, diy, charity, cooking, relaxation, music, busywork]
           description: The type of activity
+        - in: query
+          name: price
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: The price of the activity
+          example: 0.0
+        - in: query
+          name: minprice
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: The minimum price of the activity
+          example: 0.0
+        - in: query
+          name: maxprice
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: The maximum price of the activity
+          example: 0.8
+        - in: query
+          name: accessibility
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: A factor describing how possible an event is to do with zero being the most accessible
+     
+        - in: query
+          name: minaccessibility
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: the minimum accessibility
+          example: 0.0
+        - in: query
+          name: maxaccessibility
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: the maximum accessibility
+          example: 0.9
+          
         - in: query
           name: participants
           schema:
