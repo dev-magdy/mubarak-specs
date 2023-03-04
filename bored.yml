@@ -1,0 +1,111 @@
+openapi: 3.0.0
+
+info:
+  title: boredapi.com APIs
+  version: 1.0.0
+
+servers:
+  - url: https://www.boredapi.com
+    description: Production server
+
+paths:
+  /api/activity:
+    get:
+      summary: Get a random activity
+      operationId: activity
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [education, recreational, social, diy, charity, cooking, relaxation, music, busywork]
+          description: The type of activity
+        - in: query
+          name: price
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: The price of the activity
+          example: 0.0
+        - in: query
+          name: minprice
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: The minimum price of the activity
+          example: 0.0
+        - in: query
+          name: maxprice
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: The maximum price of the activity
+          example: 0.8
+        - in: query
+          name: accessibility
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: A factor describing how possible an event is to do with zero being the most accessible
+     
+        - in: query
+          name: minaccessibility
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: the minimum accessibility
+          example: 0.0
+        - in: query
+          name: maxaccessibility
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+          description: the maximum accessibility
+          example: 0.9
+          
+        - in: query
+          name: participants
+          schema:
+            type: integer
+            minimum: 1
+          description: The number of participants
+      responses:
+        200:
+          description: A random activity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+
+components:
+  schemas:
+    Activity:
+      type: object
+      properties:
+        activity:
+          type: string
+          description: Description of the queried activity
+        accessibility:
+          type: number
+          description: A factor describing how possible an event is to do with 0 being the most accessible and 1 being the least accessible. Hence the value will be between 0 and 1.
+        type:
+          type: string
+          description: Type of the activity. It will be one among ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
+        participants:
+          type: integer
+          description: The number of people that this activity could involve
+        price:
+          type: number
+          description: A factor describing the cost of the event with zero being free and 1 being very expensive. Hence the value will be between 0 and 1
+        link:
+          type: string
+          description: Online link to the activity if available
+        key:
+          type: string
+          description: A unique numeric id for the activity
