@@ -6,7 +6,7 @@ import os
 import subprocess
 from yaml import load, dump
 
-parser = argparse.ArgumentParser(description='Check compliance and optionally test endpoints. Requires python packages: pyyaml, requests and schemathesis')
+parser = argparse.ArgumentParser(description='Check compliance and optionally test endpoints.Suppors Python3. Requires python packages: pyyaml, requests and schemathesis')
 parser.add_argument('--filename', type=str, required=True,
                     help='JSON or YAML filename or url')
 parser.add_argument('--test-schema', type=bool, default=True,
@@ -67,6 +67,7 @@ for path in obj["paths"]:
 if args.test_schema:
     server = obj["servers"][0]["url"]
     p = subprocess.run(f"st run {filename} --base-url={server} --checks=all --junit-xml=test_report.xml",shell=True)
-
+    if p.returncode == 0:
+        print("Report saved in test_report.xml")
     
 
