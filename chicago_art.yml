@@ -1,27 +1,29 @@
 openapi: 3.0.0
-servers:
-- url: https://api.artic.edu/api/v1
-externalDocs:
-  description: 'See more documentation on our API here:'
-  url: https://api.artic.edu
 info:
   contact:
     email: engineering@artic.edu
-  description: An API for an aggregator of Art Institute of Chicago public data. 
+  description: An API for an aggregator of Art Institute of Chicago public data.
   license:
     name: ''
   termsOfService: https://www.artic.edu/terms/terms-and-conditions
   title: Art Institution of Chicago API
   version: 1.6-oas3
 
+servers:
+- url: https://api.artic.edu/api/v1
+externalDocs:
+  description: 'See more documentation on our API here:'
+  url: https://api.artic.edu
+
 paths:
   /agent-roles:
     get:
+      operationId: getAgentRoles
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/AgentRole'
@@ -29,7 +31,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -40,12 +42,13 @@ paths:
       - collections
   /agent-roles/{id}:
     get:
+      operationId: getAgentRolesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/AgentRole'
@@ -53,7 +56,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -64,11 +67,12 @@ paths:
       - collections
   /agent-types:
     get:
+      operationId: getAgentTypes
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/AgentType'
@@ -76,7 +80,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -87,12 +91,13 @@ paths:
       - collections
   /agent-types/{id}:
     get:
+      operationId: getAgentTypesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/AgentType'
@@ -100,7 +105,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -111,10 +116,11 @@ paths:
       - collections
   /agents:
     get:
+      operationId: getAgents
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Agent'
@@ -122,7 +128,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -132,6 +138,7 @@ paths:
       - collections
   /agents/search:
     get:
+      operationId: getAgentsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -142,7 +149,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -150,7 +157,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -161,12 +168,13 @@ paths:
       - search
   /agents/{id}:
     get:
+      operationId: getAgentsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Agent'
@@ -174,7 +182,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -185,11 +193,12 @@ paths:
       - collections
   /articles:
     get:
+      operationId: getArticles
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Article'
@@ -197,7 +206,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -207,6 +216,7 @@ paths:
       - web
   /articles/search:
     get:
+      operationId: getArticlesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -217,7 +227,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -225,7 +235,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -236,12 +246,13 @@ paths:
       - search
   /articles/{id}:
     get:
+      operationId: getArticlesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Article'
@@ -249,7 +260,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -259,6 +270,7 @@ paths:
       - web
   /artists:
     get:
+      operationId: getArtists
       parameters: []
       responses:
         '200':
@@ -271,7 +283,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -281,12 +293,13 @@ paths:
       - collections
   /artists/{id}:
     get:
+      operationId: getArtistsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Agent'
@@ -294,7 +307,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -305,11 +318,12 @@ paths:
       - collections
   /artwork-date-qualifiers:
     get:
+      operationId: getArtworkDateQualifiers
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/ArtworkDateQualifier'
@@ -317,7 +331,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -328,12 +342,13 @@ paths:
       - collections
   /artwork-date-qualifiers/{id}:
     get:
+      operationId: getArtworkDateQualifiersId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/ArtworkDateQualifier'
@@ -341,7 +356,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -352,11 +367,12 @@ paths:
       - collections
   /artwork-place-qualifiers:
     get:
+      operationId: getArtworkPlaceQualifiers
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/ArtworkPlaceQualifier'
@@ -364,7 +380,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -375,12 +391,13 @@ paths:
       - collections
   /artwork-place-qualifiers/{id}:
     get:
+      operationId: getArtworkPlaceQualifiersId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/ArtworkPlaceQualifier'
@@ -388,7 +405,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -399,11 +416,12 @@ paths:
       - collections
   /artwork-types:
     get:
+      operationId: getArtworkTypes
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/ArtworkType'
@@ -411,7 +429,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -422,12 +440,13 @@ paths:
       - collections
   /artwork-types/{id}:
     get:
+      operationId: getArtworkTypesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/ArtworkType'
@@ -435,7 +454,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -446,16 +465,17 @@ paths:
       - collections
   /artworks:
     get:
+      operationId: getArtworks
       parameters:
-        - $ref: '#/components/parameters/ids'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/page'
-        - $ref: '#/components/parameters/artworkInclude'
+      - $ref: '#/components/parameters/ids'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/artworkInclude'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Artwork'
@@ -473,6 +493,7 @@ paths:
       - collections
   /artworks/search:
     get:
+      operationId: getArtworksSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -483,7 +504,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -491,7 +512,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -503,12 +524,13 @@ paths:
       - search
   /artworks/{id}:
     get:
+      operationId: getArtworksId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Artwork'
@@ -516,7 +538,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -527,11 +549,12 @@ paths:
       - collections
   /category-terms:
     get:
+      operationId: getCategoryTerms
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/CategoryTerm'
@@ -539,7 +562,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -550,6 +573,7 @@ paths:
       - collections
   /category-terms/search:
     get:
+      operationId: getCategoryTermsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -560,7 +584,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -568,7 +592,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -579,12 +603,13 @@ paths:
       - search
   /category-terms/{id}:
     get:
+      operationId: getCategoryTermsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/CategoryTerm'
@@ -592,7 +617,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -603,11 +628,12 @@ paths:
       - collections
   /digital-catalogs:
     get:
+      operationId: getDigitalCatalogs
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/DigitalCatalog'
@@ -615,7 +641,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -626,6 +652,7 @@ paths:
       - web
   /digital-catalogs/search:
     get:
+      operationId: getDigitalCatalogsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -636,7 +663,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -644,7 +671,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -655,12 +682,13 @@ paths:
       - search
   /digital-catalogs/{id}:
     get:
+      operationId: getDigitalCatalogsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/DigitalCatalog'
@@ -668,7 +696,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -678,11 +706,12 @@ paths:
       - web
   /digital-publication-sections:
     get:
+      operationId: getDigitalPublicationSections
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/DigitalPublicationSection'
@@ -690,7 +719,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -701,6 +730,7 @@ paths:
       - web
   /digital-publication-sections/search:
     get:
+      operationId: getDigitalPublicationSectionsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -711,7 +741,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -719,7 +749,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -730,12 +760,13 @@ paths:
       - search
   /digital-publication-sections/{id}:
     get:
+      operationId: getDigitalPublicationSectionsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/DigitalPublicationSection'
@@ -743,7 +774,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -753,11 +784,12 @@ paths:
       - web
   /educator-resources:
     get:
+      operationId: getEducatorResources
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/EducatorResource'
@@ -765,7 +797,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -776,6 +808,7 @@ paths:
       - web
   /educator-resources/search:
     get:
+      operationId: getEducatorResourcesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -786,7 +819,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -794,7 +827,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -805,12 +838,13 @@ paths:
       - search
   /educator-resources/{id}:
     get:
+      operationId: getEducatorResourcesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/EducatorResource'
@@ -818,7 +852,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -828,11 +862,12 @@ paths:
       - web
   /event-occurrences:
     get:
+      operationId: getEventOccurrences
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/EventOccurrence'
@@ -840,7 +875,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -851,6 +886,7 @@ paths:
       - web
   /event-occurrences/search:
     get:
+      operationId: getEventOccurrencesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -861,7 +897,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -869,7 +905,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -880,12 +916,13 @@ paths:
       - search
   /event-occurrences/{id}:
     get:
+      operationId: getEventOccurrencesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/EventOccurrence'
@@ -893,7 +930,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -903,11 +940,12 @@ paths:
       - web
   /event-programs:
     get:
+      operationId: getEventPrograms
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/EventProgram'
@@ -915,7 +953,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -926,6 +964,7 @@ paths:
       - web
   /event-programs/search:
     get:
+      operationId: getEventProgramsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -936,7 +975,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -944,7 +983,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -955,12 +994,13 @@ paths:
       - search
   /event-programs/{id}:
     get:
+      operationId: getEventProgramsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/EventProgram'
@@ -968,7 +1008,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -978,11 +1018,12 @@ paths:
       - web
   /events:
     get:
+      operationId: getEvents
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Event'
@@ -990,7 +1031,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1000,6 +1041,7 @@ paths:
       - web
   /events/search:
     get:
+      operationId: getEventsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1010,7 +1052,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1018,7 +1060,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1029,12 +1071,13 @@ paths:
       - search
   /events/{id}:
     get:
+      operationId: getEventsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Event'
@@ -1042,7 +1085,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1052,11 +1095,12 @@ paths:
       - web
   /exhibitions:
     get:
+      operationId: getExhibitions
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Exhibition'
@@ -1064,7 +1108,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1075,6 +1119,7 @@ paths:
       - collections
   /exhibitions/search:
     get:
+      operationId: getExhibitionsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1085,7 +1130,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1093,7 +1138,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1104,12 +1149,13 @@ paths:
       - search
   /exhibitions/{id}:
     get:
+      operationId: getExhibitionsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Exhibition'
@@ -1117,7 +1163,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1128,11 +1174,12 @@ paths:
       - collections
   /galleries:
     get:
+      operationId: getGalleries
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Gallery'
@@ -1140,7 +1187,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1150,6 +1197,7 @@ paths:
       - collections
   /galleries/search:
     get:
+      operationId: getGalleriesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1160,7 +1208,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1168,7 +1216,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1179,12 +1227,13 @@ paths:
       - search
   /galleries/{id}:
     get:
+      operationId: getGalleriesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Gallery'
@@ -1192,7 +1241,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1203,11 +1252,12 @@ paths:
       - collections
   /generic-pages:
     get:
+      operationId: getGenericPages
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/GenericPage'
@@ -1215,7 +1265,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1226,6 +1276,7 @@ paths:
       - web
   /generic-pages/search:
     get:
+      operationId: getGenericPagesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1236,7 +1287,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1244,7 +1295,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1255,12 +1306,13 @@ paths:
       - search
   /generic-pages/{id}:
     get:
+      operationId: getGenericPagesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/GenericPage'
@@ -1268,7 +1320,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1278,11 +1330,12 @@ paths:
       - web
   /highlights:
     get:
+      operationId: getHighlights
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Highlight'
@@ -1290,7 +1343,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1301,6 +1354,7 @@ paths:
       - web
   /highlights/search:
     get:
+      operationId: getHighlightsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1311,7 +1365,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1319,7 +1373,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1330,12 +1384,13 @@ paths:
       - search
   /highlights/{id}:
     get:
+      operationId: getHighlightsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Highlight'
@@ -1343,7 +1398,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1353,11 +1408,12 @@ paths:
       - web
   /images:
     get:
+      operationId: getImages
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Image'
@@ -1365,7 +1421,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1375,6 +1431,7 @@ paths:
       - collections
   /images/search:
     get:
+      operationId: getImagesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1385,7 +1442,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1393,7 +1450,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1404,12 +1461,13 @@ paths:
       - search
   /images/{id}:
     get:
+      operationId: getImagesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Image'
@@ -1417,7 +1475,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1428,11 +1486,12 @@ paths:
       - collections
   /mobile-sounds:
     get:
+      operationId: getMobileSounds
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Sound'
@@ -1440,7 +1499,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1451,6 +1510,7 @@ paths:
       - mobile
   /mobile-sounds/search:
     get:
+      operationId: getMobileSoundsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1461,7 +1521,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1469,7 +1529,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1480,12 +1540,13 @@ paths:
       - search
   /mobile-sounds/{id}:
     get:
+      operationId: getMobileSoundsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Sound'
@@ -1493,7 +1554,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1503,11 +1564,12 @@ paths:
       - mobile
   /places:
     get:
+      operationId: getPlaces
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Place'
@@ -1515,7 +1577,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1525,6 +1587,7 @@ paths:
       - collections
   /places/search:
     get:
+      operationId: getPlacesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1535,7 +1598,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1543,7 +1606,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1554,12 +1617,13 @@ paths:
       - search
   /places/{id}:
     get:
+      operationId: getPlacesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Place'
@@ -1567,7 +1631,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1578,11 +1642,12 @@ paths:
       - collections
   /press-releases:
     get:
+      operationId: getPressReleases
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/PressRelease'
@@ -1590,7 +1655,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1601,6 +1666,7 @@ paths:
       - web
   /press-releases/search:
     get:
+      operationId: getPressReleasesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1611,7 +1677,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1619,7 +1685,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1630,12 +1696,13 @@ paths:
       - search
   /press-releases/{id}:
     get:
+      operationId: getPressReleasesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/PressRelease'
@@ -1643,7 +1710,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1653,11 +1720,12 @@ paths:
       - web
   /printed-catalogs:
     get:
+      operationId: getPrintedCatalogs
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/PrintedCatalog'
@@ -1665,7 +1733,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1676,6 +1744,7 @@ paths:
       - web
   /printed-catalogs/search:
     get:
+      operationId: getPrintedCatalogsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1686,7 +1755,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1694,7 +1763,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1705,12 +1774,13 @@ paths:
       - search
   /printed-catalogs/{id}:
     get:
+      operationId: getPrintedCatalogsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/PrintedCatalog'
@@ -1718,7 +1788,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1728,11 +1798,12 @@ paths:
       - web
   /products:
     get:
+      operationId: getProducts
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Product'
@@ -1740,7 +1811,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1750,6 +1821,7 @@ paths:
       - shop
   /products/search:
     get:
+      operationId: getProductsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1760,7 +1832,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1768,7 +1840,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1779,12 +1851,13 @@ paths:
       - search
   /products/{id}:
     get:
+      operationId: getProductsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Product'
@@ -1792,7 +1865,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1802,11 +1875,12 @@ paths:
       - shop
   /publications:
     get:
+      operationId: getPublications
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Publication'
@@ -1814,7 +1888,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1825,6 +1899,7 @@ paths:
       - dsc
   /publications/search:
     get:
+      operationId: getPublicationsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1835,7 +1910,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1843,7 +1918,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1854,12 +1929,13 @@ paths:
       - search
   /publications/{id}:
     get:
+      operationId: getPublicationsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Publication'
@@ -1867,7 +1943,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1875,40 +1951,14 @@ paths:
       tags:
       - publications
       - dsc
-  #/search:
-  #  get:
-  #    parameters:
-  #    - $ref: '#/components/parameters/q'
-  #    - $ref: '#/components/parameters/query'
-  #    - $ref: '#/components/parameters/sort'
-  #    - $ref: '#/components/parameters/from'
-  #    - $ref: '#/components/parameters/size'
-  #   - $ref: '#/components/parameters/facets'
-  #    responses:
-  #     '200':
-  #        content:
-  #          'application/json':
-  #           schema:
-  #              items:
-  #                $ref: '#/components/schemas/SearchResult'
-  #              type: array
-  #        description: Successful operation
-  #     default:
-  #        content:
-  #         'application/json':
-  #            schema:
-  #              $ref: '#/components/schemas/Error'
-  #        description: error
-  #    summary: Search all data in the aggregator
-  #    tags:
-  #    - search
   /sections:
     get:
+      operationId: getSections
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Section'
@@ -1916,7 +1966,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1926,6 +1976,7 @@ paths:
       - dsc
   /sections/search:
     get:
+      operationId: getSectionsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -1936,7 +1987,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -1944,7 +1995,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1955,12 +2006,13 @@ paths:
       - search
   /sections/{id}:
     get:
+      operationId: getSectionsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Section'
@@ -1968,7 +2020,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -1978,11 +2030,12 @@ paths:
       - dsc
   /sites:
     get:
+      operationId: getSites
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Site'
@@ -1990,7 +2043,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2000,6 +2053,7 @@ paths:
       - ''
   /sites/search:
     get:
+      operationId: getSitesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -2010,7 +2064,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -2018,7 +2072,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2029,12 +2083,13 @@ paths:
       - search
   /sites/{id}:
     get:
+      operationId: getSitesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Site'
@@ -2042,7 +2097,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2052,11 +2107,12 @@ paths:
       - ''
   /sounds:
     get:
+      operationId: getSounds
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Sound'
@@ -2064,7 +2120,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2074,6 +2130,7 @@ paths:
       - collections
   /sounds/search:
     get:
+      operationId: getSoundsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -2084,7 +2141,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -2092,7 +2149,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2103,12 +2160,13 @@ paths:
       - search
   /sounds/{id}:
     get:
+      operationId: getSoundsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Sound'
@@ -2116,7 +2174,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2127,11 +2185,12 @@ paths:
       - collections
   /static-pages:
     get:
+      operationId: getStaticPages
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/StaticPage'
@@ -2139,7 +2198,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2150,6 +2209,7 @@ paths:
       - web
   /static-pages/search:
     get:
+      operationId: getStaticPagesSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -2160,7 +2220,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -2168,7 +2228,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2179,12 +2239,13 @@ paths:
       - search
   /static-pages/{id}:
     get:
+      operationId: getStaticPagesId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/StaticPage'
@@ -2192,7 +2253,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2202,11 +2263,12 @@ paths:
       - web
   /texts:
     get:
+      operationId: getTexts
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Text'
@@ -2214,7 +2276,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2224,6 +2286,7 @@ paths:
       - collections
   /texts/search:
     get:
+      operationId: getTextsSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -2234,7 +2297,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -2242,7 +2305,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2253,12 +2316,13 @@ paths:
       - search
   /texts/{id}:
     get:
+      operationId: getTextsId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Text'
@@ -2266,7 +2330,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2277,11 +2341,12 @@ paths:
       - collections
   /tours:
     get:
+      operationId: getTours
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Tour'
@@ -2289,7 +2354,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2299,6 +2364,7 @@ paths:
       - mobile
   /tours/search:
     get:
+      operationId: getToursSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -2309,7 +2375,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -2317,7 +2383,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2328,12 +2394,13 @@ paths:
       - search
   /tours/{id}:
     get:
+      operationId: getToursId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Tour'
@@ -2341,7 +2408,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2351,11 +2418,12 @@ paths:
       - mobile
   /videos:
     get:
+      operationId: getVideos
       parameters: []
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Video'
@@ -2363,7 +2431,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2373,6 +2441,7 @@ paths:
       - collections
   /videos/search:
     get:
+      operationId: getVideosSearch
       parameters:
       - $ref: '#/components/parameters/q'
       - $ref: '#/components/parameters/query'
@@ -2383,7 +2452,7 @@ paths:
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/SearchResult'
@@ -2391,7 +2460,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2402,12 +2471,13 @@ paths:
       - search
   /videos/{id}:
     get:
+      operationId: getVideosId
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
         '200':
           content:
-            'application/json':
+            application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/Video'
@@ -2415,7 +2485,7 @@ paths:
           description: Successful operation
         default:
           content:
-            'application/json':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
           description: error
@@ -2426,6 +2496,93 @@ paths:
       - collections
 
 components:
+  parameters:
+    artworkInclude:
+      description: A comma-separated list of subresource to embed in the returned
+        resources
+      in: query
+      name: include
+      schema:
+        enum:
+        - artist_pivots
+        - dates
+        - place_pivots
+        - sites
+        type: string
+    facets:
+      description: A comma-separated list of 'count' aggregation facets to include
+        in the results.
+      in: query
+      name: facets
+      schema:
+        type: string
+    fields:
+      description: A comma-separated list of fields to return per resource
+      in: query
+      name: fields
+      schema:
+        type: string
+    from:
+      description: Starting point of results. Pagination via Elasticsearch conventions
+      in: query
+      name: from
+      schema:
+        type: string
+    id:
+      example: 1
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+    ids:
+      description: A comma-separated list of resource ids to retrieve
+      example: 1,2,3
+      in: query
+      name: ids
+      schema:
+        type: string
+    limit:
+      description: The number of resources to return per page
+      example: 1
+      in: query
+      name: limit
+      schema:
+        type: integer
+    page:
+      description: The page of resources to retrieve
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    q:
+      description: Your search query
+      example: art
+      in: query
+      name: q
+      schema:
+        type: string
+    query:
+      description: For complex queries, you can pass Elasticsearch domain syntax queries
+        here
+      in: query
+      name: query
+      schema:
+        type: string
+    size:
+      description: Number of results to return. Pagination via Elasticsearch conventions
+      example: 1
+      in: query
+      name: size
+      schema:
+        type: string
+    sort:
+      description: Used in conjunction with `query`
+      in: query
+      name: sort
+      schema:
+        type: string
   schemas:
     Agent:
       properties:
@@ -2444,15 +2601,15 @@ components:
         id:
           description: Unique identifier of this resource. Taken from the source system.
         is_artist:
-          description: Whether the agent is an artist. Solely based on whether the agent
-            is related to an artwork record.
+          description: Whether the agent is an artist. Solely based on whether the
+            agent is related to an artwork record.
         sort_title:
           description: Sortable name for this agent, typically with last name first.
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2477,8 +2634,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2501,8 +2658,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2527,8 +2684,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2557,8 +2714,8 @@ components:
           description: Unique identifiers of all other non-preferred style terms for
             this work
         alt_subject_ids:
-          description: Unique identifiers of all other non-preferred subject terms for
-            this work
+          description: Unique identifiers of all other non-preferred subject terms
+            for this work
         alt_technique_ids:
           description: Unique identifiers of all other non-preferred technique terms
             for this work
@@ -2569,8 +2726,8 @@ components:
         api_model:
           description: REST API resource type or endpoint
         artist_display:
-          description: Readable description of the creator of this work. Includes artist
-            names, nationality and lifespan dates
+          description: Readable description of the creator of this work. Includes
+            artist names, nationality and lifespan dates
         artist_id:
           description: Unique identifier of the preferred artist/culture associated
             with this work
@@ -2586,8 +2743,8 @@ components:
         artwork_type_title:
           description: The kind of object or work (e.g. Painting, Sculpture, Book)
         boost_rank:
-          description: Manual indication of what rank this artwork should take in search
-            results. Noncontiguous.
+          description: Manual indication of what rank this artwork should take in
+            search results. Noncontiguous.
         catalogue_display:
           description: "Brief text listing all the catalogues raisonn\xE9s which include
             this work. This isn't an exhaustive list of publications where the work
@@ -2597,8 +2754,8 @@ components:
         category_titles:
           description: Names of the categories this artwork is a part of
         classification_id:
-          description: Unique identifier of the preferred classification term for this
-            work
+          description: Unique identifier of the preferred classification term for
+            this work
         classification_ids:
           description: Unique identifiers of all classification terms for this work
         classification_title:
@@ -2611,8 +2768,8 @@ components:
           description: Unbounded positive float representing an abstract measure of
             colorfulness.
         copyright_notice:
-          description: Statement notifying how the work is protected by copyright. Applies
-            to the work itself, not image or other related assets.
+          description: Statement notifying how the work is protected by copyright.
+            Applies to the work itself, not image or other related assets.
         credit_line:
           description: Brief statement indicating how the work came into the collection
         date_display:
@@ -2621,16 +2778,16 @@ components:
             Era etc. Written by curators and editors in house style, and is the preferred
             field for display on websites and apps. '
         date_end:
-          description: The year of the period of time associated with the creation of
-            this work
+          description: The year of the period of time associated with the creation
+            of this work
         date_qualifier_id:
-          description: Unique identifier of the qualifer to the dates provided for this
-            record.
+          description: Unique identifier of the qualifer to the dates provided for
+            this record.
         date_qualifier_title:
           description: Readable, text qualifer to the dates provided for this record.
         date_start:
-          description: The year of the period of time associated with the creation of
-            this work
+          description: The year of the period of time associated with the creation
+            of this work
         department_id:
           description: Unique identifier of the curatorial department that this work
             belongs to
@@ -2640,8 +2797,8 @@ components:
           description: Longer explanation describing the work
         dimensions:
           description: The size, shape, scale, and dimensions of the work. May include
-            multiple dimensions like overall, frame, or dimension for each section of
-            a work. Free-form text formatted in a house style.
+            multiple dimensions like overall, frame, or dimension for each section
+            of a work. Free-form text formatted in a house style.
         document_ids:
           description: Unique identifiers of assets that serve as documentation for
             this artwork
@@ -2656,15 +2813,16 @@ components:
         gallery_title:
           description: The location of this work in our museum
         has_advanced_imaging:
-          description: Whether this artwork is enhanced with 3D models, 360 image sequences,
-            Mirador views, etc.
+          description: Whether this artwork is enhanced with 3D models, 360 image
+            sequences, Mirador views, etc.
         has_educational_resources:
           description: Whether this artwork has any documents tagged as educational
         has_multimedia_resources:
-          description: Whether this artwork has any associated microsites, digital publications,
-            or documents tagged as multimedia
+          description: Whether this artwork has any associated microsites, digital
+            publications, or documents tagged as multimedia
         has_not_been_viewed_much:
-          description: Whether the artwork hasn't been visited on our website very much
+          description: Whether the artwork hasn't been visited on our website very
+            much
         id:
           description: Unique identifier of this resource. Taken from the source system.
         image_id:
@@ -2684,13 +2842,13 @@ components:
           description: Whether the work is in the public domain, meaning it was created
             before copyrights existed or has left the copyright term
         is_zoomable:
-          description: Whether images of the work are allowed to be displayed in a zoomable
-            interface.
+          description: Whether images of the work are allowed to be displayed in a
+            zoomable interface.
         latitude:
           description: Latitude coordinate of the location of this work in our galleries
         latlon:
-          description: Latitude and longitude coordinates of the location of this work
-            in our galleries
+          description: Latitude and longitude coordinates of the location of this
+            work in our galleries
         longitude:
           description: Longitude coordinate of the location of this work in our galleries
         main_reference_number:
@@ -2718,8 +2876,8 @@ components:
           description: The location where the creation, design, or production of the
             work took place, or the original location of the work
         provenance_text:
-          description: Ownership/collecting history of the work. May include names of
-            owners, dates, and possibly methods of transfer of ownership. Free-form
+          description: Ownership/collecting history of the work. May include names
+            of owners, dates, and possibly methods of transfer of ownership. Free-form
             text formatted in a house style.
         publication_history:
           description: Bibliographic list of all the places this work has been published
@@ -2727,8 +2885,8 @@ components:
           description: Indicator of how much metadata on the work in published. Web
             Basic is the least amount, Web Everything is the greatest.
         section_ids:
-          description: Unique identifiers of the digital publication chapters this work
-            in included in
+          description: Unique identifiers of the digital publication chapters this
+            work in included in
         section_titles:
           description: Names of the digital publication chapters this work is included
             in
@@ -2753,13 +2911,14 @@ components:
         subject_titles:
           description: The names of all subject terms related to this artwork
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
         technique_id:
-          description: Unique identifier of the preferred technique term for this work
+          description: Unique identifier of the preferred technique term for this
+            work
         technique_ids:
           description: Unique identifiers of all technique terms for this work
         technique_titles:
@@ -2796,8 +2955,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2820,8 +2979,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2836,8 +2995,8 @@ components:
     ArtworkType:
       properties:
         aat_id:
-          description: Identifier of reconciled (most similar) term in the Getty's Art
-            and Architecture Thesaurus (AAT)
+          description: Identifier of reconciled (most similar) term in the Getty's
+            Art and Architecture Thesaurus (AAT)
         api_link:
           description: REST API link for this resource
         api_model:
@@ -2847,8 +3006,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2863,8 +3022,8 @@ components:
     CategoryTerm:
       properties:
         aat_id:
-          description: Identifier of reconciled (most similar) term in the Getty's Art
-            and Architecture Thesaurus (AAT)
+          description: Identifier of reconciled (most similar) term in the Getty's
+            Art and Architecture Thesaurus (AAT)
         api_link:
           description: REST API link for this resource
         api_model:
@@ -2879,8 +3038,8 @@ components:
           description: 'Takes one of the following values: classification, material,
             technique, style, subject, department, theme'
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         timestamp:
           description: Date and time the record was updated in the aggregator search
             index
@@ -2902,8 +3061,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2935,8 +3094,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -2963,8 +3122,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3021,11 +3180,11 @@ components:
         entrance:
           description: Which entrance to use for this event
         event_host_id:
-          description: Unique identifier of the host (cf. event programs) that is presenting
-            this event
+          description: Unique identifier of the host (cf. event programs) that is
+            presenting this event
         event_host_title:
-          description: Unique identifier of the host (cf. event programs) that is presenting
-            this event
+          description: Unique identifier of the host (cf. event programs) that is
+            presenting this event
         event_type_id:
           description: Unique identifier indicating the preferred type of this event
         header_description:
@@ -3037,7 +3196,8 @@ components:
         image_url:
           description: The URL of an image representing this page
         is_admission_required:
-          description: Whether admission to the museum is required to attend this event
+          description: Whether admission to the museum is required to attend this
+            event
         is_after_hours:
           description: Whether the event is to be held after the museum closes
         is_free:
@@ -3063,8 +3223,8 @@ components:
         location:
           description: Where the event takes place
         program_ids:
-          description: Unique identifiers indicating the programs this event is a part
-            of
+          description: Unique identifiers indicating the programs this event is a
+            part of
         program_titles:
           description: Titles of the programs this event is a part of
         rsvp_link:
@@ -3082,16 +3242,16 @@ components:
         start_time:
           description: The time the event starts
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
         survey_url:
           description: URL to the survey associated with this event
         ticketed_event_id:
-          description: Unique identifier of the event in the ticketing system this website
-            event is tied to
+          description: Unique identifier of the event in the ticketing system this
+            website event is tied to
         timestamp:
           description: Date and time the record was updated in the aggregator search
             index
@@ -3140,8 +3300,8 @@ components:
         start_at:
           description: The date the event occurrence begins
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3168,8 +3328,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3194,8 +3354,8 @@ components:
         api_model:
           description: REST API resource type or endpoint
         artist_ids:
-          description: Unique identifiers of the artist agent records representing who
-            was shown in the exhibition
+          description: Unique identifiers of the artist agent records representing
+            who was shown in the exhibition
         artwork_ids:
           description: Unique identifiers of the artworks that were part of the exhibition
         artwork_titles:
@@ -3217,8 +3377,8 @@ components:
         is_featured:
           description: Is this exhibition currently featured on our website?
         is_published:
-          description: Is this exhibition currently published on our website? Only relevant
-            for non-past exhibitions.
+          description: Is this exhibition currently published on our website? Only
+            relevant for non-past exhibitions.
         short_description:
           description: Brief explanation of what this exhibition is
         site_ids:
@@ -3229,8 +3389,8 @@ components:
         status:
           description: Whether the exhibition is open or closed
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3268,8 +3428,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3299,8 +3459,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3327,8 +3487,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3343,7 +3503,8 @@ components:
     Image:
       properties:
         ahash:
-          description: Image hash generated using ahash algorithm with 64 boolean subfields
+          description: Image hash generated using ahash algorithm with 64 boolean
+            subfields
         alt_text:
           description: Alternative text for the asset to describe it to people with
             low or no vision
@@ -3387,12 +3548,13 @@ components:
           description: Low-quality image placeholder (LQIP). Currently a 5x5-constrained,
             base64-encoded GIF.
         phash:
-          description: Image hash generated using phash algorithm with 64 boolean subfields
+          description: Image hash generated using phash algorithm with 64 boolean
+            subfields
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3424,8 +3586,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3453,8 +3615,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3481,8 +3643,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3509,7 +3671,8 @@ components:
         description:
           description: Explanation of what this product is
         exhibition_ids:
-          description: Unique identifiers of the exhibitions associated with this product
+          description: Unique identifiers of the exhibitions associated with this
+            product
         external_sku:
           description: Numeric product identification code of a machine-readable barcode,
             when the customer sku differs from our internal one
@@ -3518,24 +3681,24 @@ components:
         image_url:
           description: URL of an image for this product
         max_compare_at_price:
-          description: Number indicating how much the most expensive variant of a product
-            cost before a sale
+          description: Number indicating how much the most expensive variant of a
+            product cost before a sale
         max_current_price:
-          description: Number indicating how much the most expensive variant of a product
-            costs right now
+          description: Number indicating how much the most expensive variant of a
+            product costs right now
         min_compare_at_price:
-          description: Number indicating how much the least expensive variant of a product
-            cost before a sale
+          description: Number indicating how much the least expensive variant of a
+            product cost before a sale
         min_current_price:
-          description: Number indicating how much the least expensive variant of a product
-            costs right now
+          description: Number indicating how much the least expensive variant of a
+            product costs right now
         price_display:
           description: Explanation of what this product is
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3562,8 +3725,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3607,7 +3770,8 @@ components:
         api_model:
           description: REST API resource type or endpoint
         artwork_id:
-          description: Unique identifier of the artwork with which this section is associated
+          description: Unique identifier of the artwork with which this section is
+            associated
         content:
           description: Content of this section in plaintext
         generic_page_id:
@@ -3622,8 +3786,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3644,7 +3808,8 @@ components:
         api_model:
           description: REST API resource type or endpoint
         artwork_ids:
-          description: Unique identifiers of the artworks this site is associated with
+          description: Unique identifiers of the artworks this site is associated
+            with
         artwork_titles:
           description: Names of the artworks this site is associated with
         description:
@@ -3659,8 +3824,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3685,8 +3850,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3714,8 +3879,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3762,8 +3927,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3804,8 +3969,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3852,8 +4017,8 @@ components:
         source_updated_at:
           description: Date and time the resource was updated in the source system
         suggest_autocomplete_all:
-          description: Internal field to power the `/autosuggest` endpoint. Do not use
-            directly.
+          description: Internal field to power the `/autosuggest` endpoint. Do not
+            use directly.
         suggest_autocomplete_boosted:
           description: Internal field to power the `/autocomplete` endpoint. Do not
             use directly.
@@ -3868,89 +4033,3 @@ components:
         updated_at:
           description: Date and time the record was updated in the aggregator database
       type: object
-  parameters:
-    facets:
-      description: A comma-separated list of 'count' aggregation facets to include
-        in the results.
-      in: query
-      name: facets
-      schema:
-        type: string
-    fields:
-      description: A comma-separated list of fields to return per resource
-      in: query
-      name: fields
-      schema:
-        type: string
-    artworkInclude:
-      description: A comma-separated list of subresource to embed in the returned resources
-      in: query
-      name: include
-      schema:
-        type: string
-        enum:
-          - artist_pivots
-          - dates
-          - place_pivots
-          - sites
-    from:
-      description: Starting point of results. Pagination via Elasticsearch conventions
-      in: query
-      name: from
-      schema:
-        type: string
-    id:
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
-      example: 1
-    ids:
-      description: A comma-separated list of resource ids to retrieve
-      in: query
-      name: ids
-      schema:
-        type: string
-      example: "1,2,3"
-    limit:
-      description: The number of resources to return per page
-      in: query
-      name: limit
-      schema:
-        type: integer
-      example: 1
-    page:
-      description: The page of resources to retrieve
-      in: query
-      name: page
-      schema:
-        type: integer
-      example: 1
-    q:
-      description: Your search query
-      in: query
-      name: q
-      schema:
-        type: string
-      example: 'art'
-    query:
-      description: For complex queries, you can pass Elasticsearch domain syntax queries
-        here
-      in: query
-      name: query
-      schema:
-        type: string
-    size:
-      description: Number of results to return. Pagination via Elasticsearch conventions
-      in: query
-      name: size
-      schema:
-        type: string
-      example: 1
-    sort:
-      description: Used in conjunction with `query`
-      in: query
-      name: sort
-      schema:
-        type: string
