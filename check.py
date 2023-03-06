@@ -54,7 +54,7 @@ for path in obj["paths"]:
         continue
     for verb in verbs:
         if verb in path_obj:
-            if 'parameter' in path_obj[verb]:
+            if 'parameters' in path_obj[verb]:
                 for parameter in path_obj[verb]['parameters']:
                     if args.assert_example:
                         assert "example" in parameter, f"example property not in {path} {verb}.{parameter['name']}"
