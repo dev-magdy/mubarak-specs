@@ -54,14 +54,15 @@ for path in obj["paths"]:
         continue
     for verb in verbs:
         if verb in path_obj:
+            if args.assert_operationid:
+                assert "operationId" in path_obj[verb], f"operationId property not in {path} {verb}"
+                operationId = path_obj[verb]["operationId"]
+                assert "_" not in operationId or "-" not in operationId or " " not in operationId,f"operationId property is not in camelCase and contains space, - or _ in {path} {verb}"
             if 'parameters' in path_obj[verb]:
                 for parameter in path_obj[verb]['parameters']:
                     if args.assert_example:
                         assert "example" in parameter, f"example property not in {path} {verb}.{parameter['name']}"
-                    if args.assert_operationid:
-                        assert "operationId" in parameter, f"operationId property not in {path} {verb}.{parameter['name']}"
-                        operationId = parameter['name']
-                        assert "_" in operationId or "-" in operationId or " " in operationId,f"operationId property is not in camelCase and contains space, - or _ in {path} {verb}.{parameter['name']}"
+                    
                         
                     
 if args.test_schema:
