@@ -1,6 +1,7 @@
 
 import sys
 from yaml import load, dump
+import json
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
@@ -21,7 +22,7 @@ def load_file(filename):
         return load(open(filename,"r"),Loader=Loader)
     if filename.endswith("json"):
         if filename.startswith("http"):
-            return json.loads(get_file(filename),Loader=Loader)
+            return json.loads(get_file(filename))
         return json.load(open(filename,"r"))
     raise Exception("file name does not end with yaml,yml or json")
 
@@ -62,6 +63,8 @@ for path in obj["paths"]:
         if verb in path_obj:
             path_obj[verb]["operationId"] = verb+generate(path)
             
-name,ext = filename.split(".")                                        
-dump(obj,open(name+"_fixed."+ext,"w"),Dumper=Dumper)
-
+name,ext = filename.split(".")
+if ext in ["yaml","yml"]:
+    dump(obj,open(name+"_fixed."+ext,"w"),Dumper=Dumper)
+else:
+    json.dump(obj,open(name+"_fixed."+ext,"w"))
