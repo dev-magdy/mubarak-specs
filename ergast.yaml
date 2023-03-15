@@ -1,4 +1,5 @@
 openapi: 3.0.2
+name: ergast
 info:
   title: Ergast F1 DB OpenAPI Spec
   description: "This is a *partial* definition of the [Ergast F1 API](https://ergast.com/mrd/) in the OpenAPI 3.0 specification.\
