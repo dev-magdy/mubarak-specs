@@ -279,7 +279,7 @@ paths:
       tags:
       - sparql
 servers:
-- url: //api.aucklandmuseum.com
+- url: https://api.aucklandmuseum.com
 tags:
 - description: media - images and documents
   name: media
